@@ -1,5 +1,5 @@
 const Navbar = () => {
-    return ( <div className="navbar bg-base-100 w-7xl">
+    return ( <div className="navbar bg-white w-7xl">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost btn-circle">
