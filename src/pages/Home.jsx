@@ -17,7 +17,7 @@ const Home = () => {
             <LeftSidebar />
           </div>
           <div className="flex-1"></div>
-          <div className="min-w-[18rem] max-w-[18rem] hidden xl:block bg-neutrals-900">
+          <div className="min-w-[19rem] max-w-[19rem] hidden xl:block bg-neutrals-900">
             <RightSidebar />
           </div>
         </div>
