@@ -1,5 +1,6 @@
-import LeftSidebar from "../components/LeftSidebar";
 import Navbar from "../components/Navbar";
+import LeftSidebar from "../components/LeftSidebar";
+import RightSidebar from "../components/RightSidebar";
 
 const Home = () => {
   document.title = "JustSmile | Home";
@@ -16,7 +17,9 @@ const Home = () => {
             <LeftSidebar />
           </div>
           <div className="flex-1"></div>
-          <div className="min-w-[18rem] hidden xl:block bg-neutrals-950"></div>
+          <div className="min-w-[18rem] max-w-[18rem] hidden xl:block bg-neutrals-900">
+            <RightSidebar />
+          </div>
         </div>
       </div>
       <div className="fixed bottom-0 left-0 h-20 bg-green-500 z-30 w-full lg:hidden"></div>

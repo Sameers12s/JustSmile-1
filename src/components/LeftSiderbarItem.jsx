@@ -6,7 +6,7 @@ const SidebarItem = ({ children, type = "secondary", isActive = false }) => {
   return (
     <button
       className={classNames(
-        `relative btn btn-${type} h-16 justify-start font-bold rounded-xl hover:bg-neutrals-800`,
+        `relative btn btn-${type} h-16 justify-start font-bold rounded-xl hover:bg-neutrals-800 hover:border-transparent`,
         {
           "bg-transparent": !isActive,
           "border-transparent": !isActive,
