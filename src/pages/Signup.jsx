@@ -36,10 +36,7 @@ const Login = () => {
             required
           />
 
-          <div className="flex justify-between items-center mb-4">
-            <a href="#" className="text-white">
-              <u>Forget Password?</u>
-            </a>
+          <div className="flex justify-end mb-4">
 
             <div className="flex justify-end my-5">
               <Link to="/login">
