@@ -8,12 +8,14 @@ import Notification from '../pages/Notification'
 import Search from '../pages/Search'
 import Setting from '../pages/Setting'
 import PageNotFound from "../pages/PageNotFound";
+import AddPostPopup from "../components/AddPostPopup";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
   },
+
   {
     path: "/login",
     element: <Login />,
@@ -45,6 +47,12 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: <PageNotFound />,
+  },
+
+  //test pages
+  {
+    path:"/test",
+    element:<AddPostPopup/>,
   },
 ]);
 
