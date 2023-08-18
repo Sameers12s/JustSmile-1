@@ -9,6 +9,7 @@ import Search from '../pages/Search'
 import Setting from '../pages/Setting'
 import PageNotFound from "../pages/PageNotFound";
 import AddPostPopup from "../components/AddPostPopup";
+import SettingPersonaldetail from "../components/SettingPersonaldetail";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
   //test pages
   {
     path:"/test",
-    element:<AddPostPopup/>,
+    element:<SettingPersonaldetail/>,
   },
 ]);
 
