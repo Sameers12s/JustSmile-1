@@ -10,6 +10,9 @@ import Setting from '../pages/Setting'
 import PageNotFound from "../pages/PageNotFound";
 import AddPostPopup from "../components/AddPostPopup";
 import SettingPersonaldetail from "../components/SettingPersonaldetail";
+import SocialLinks from "../components/SocialLinks";
+import Security from "../components/Security";
+import DangerZone from "../components/DangerZone";
 
 const router = createBrowserRouter([
   {
@@ -53,7 +56,7 @@ const router = createBrowserRouter([
   //test pages
   {
     path:"/test",
-    element:<SettingPersonaldetail/>,
+    element:<DangerZone/>,
   },
 ]);
 
