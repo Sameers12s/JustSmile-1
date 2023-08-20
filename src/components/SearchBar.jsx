@@ -9,14 +9,15 @@ const SearchBar = () => {
 
                     </div>
                     <div className="flex py-3 w-full">
-                    <input id="email" className=" textarea bg-neutrals-900 rounded-lg w-full h-3" placeholder="Search accounts or posts by hashtags"></input>
+                        <input id="email" className=" textarea bg-neutrals-900 rounded-lg w-full h-3" placeholder="Search accounts or posts by hashtags"></input>
                     </div>
                 </div>
                 <div className="flex flex-row w-full justify-center items-center border-t-2 border-neutral-800 py-3" >
                     <div className="flex w-full justify-center ">
-                        <SidebarButtons isActive={false}>
-                            ACCOUNTS
-                        </SidebarButtons>
+                        <button >
+                            <SidebarButtons isActive={false}>
+                                ACCOUNTS
+                            </SidebarButtons></button>
                     </div>
                     <div className="flex w-full justify-center">
                         <SidebarButtons isActive={false}>
