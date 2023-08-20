@@ -13,6 +13,11 @@ import SettingPersonaldetail from "../components/SettingPersonaldetail";
 import SocialLinks from "../components/SocialLinks";
 import Security from "../components/Security";
 import DangerZone from "../components/DangerZone";
+import AppTheme from "../components/AppTheme";
+import DeletePopup from "../components/DeletePopup";
+import ProfilePictureCrop from "../components/ProfilePictureCrop";
+import SearchBar from "../components/SearchBar";
+import LeftSidebar from "../components/LeftSidebar";
 
 const router = createBrowserRouter([
   {
@@ -56,7 +61,11 @@ const router = createBrowserRouter([
   //test pages
   {
     path:"/test",
-    element:<DangerZone/>,
+    element:<SearchBar/>,
+  },
+  {
+    path:"/test2",
+    element:<LeftSidebar/>,
   },
 ]);
 
