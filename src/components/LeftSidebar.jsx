@@ -1,4 +1,6 @@
-import SidebarItem from "./LeftSiderbarItem";
+import { useRef } from "react";
+import AddPostPopup from "./AddPostPopup";
+import SidebarButtons from "./SidebarButtons";
 import {
   IconBell,
   IconMessageCircle2,
@@ -10,42 +12,55 @@ import {
 } from "@tabler/icons-react";
 
 const LeftSidebar = () => {
+  const modal = useRef();
+
+  function open() {
+    modal.current?.showModal();
+  }
+
   return (
     <div className="flex flex-col h-full px-4 py-1 space-y-1">
-      <button className="btn btn-primary justify-start h-16 rounded-xl font-extrabold">
+      <button
+        className="btn btn-primary justify-start h-16 rounded-xl font-bold"
+        onClick={open}
+      >
         <IconPlus />
         NEW POST
       </button>
 
-      <SidebarItem isActive={true}>
+      <SidebarButtons isActive={true} link={"home"}>
         <IconTable />
         FEED
-      </SidebarItem>
+      </SidebarButtons>
 
-      <SidebarItem>
+      <SidebarButtons link={"notifications"}>
         <IconBell />
         NOTIFICATIONS
-      </SidebarItem>
+      </SidebarButtons>
 
-      <SidebarItem>
+      <SidebarButtons link={"messages"}>
         <IconMessageCircle2 />
         MESSAGES
-      </SidebarItem>
+      </SidebarButtons>
 
-      <SidebarItem>
+      <SidebarButtons link={"search"}>
         <IconSearch />
         SEARCH
-      </SidebarItem>
+      </SidebarButtons>
       <div className="flex-1"></div>
-      <SidebarItem>
+      <SidebarButtons link={"account"}>
         <IconUser />
         ACCOUNT
-      </SidebarItem>
+      </SidebarButtons>
 
-      <SidebarItem>
+      <SidebarButtons link={"setting"}>
         <IconSettings />
         SETTINGS
-      </SidebarItem>
+      </SidebarButtons>
+
+      <dialog ref={modal}>
+        <AddPostPopup close={() => modal.current?.hideModal()} />
+      </dialog>
     </div>
   );
 };
