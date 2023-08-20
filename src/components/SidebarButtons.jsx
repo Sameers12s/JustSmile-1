@@ -1,10 +1,19 @@
 import classNames from "classnames";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const SidebarItem = ({ children, type = "secondary", isActive = false }) => {
+const SidebarButtons = ({
+  children,
+  type = "secondary",
+  isActive = false,
+  link = "/",
+}) => {
   "btn-primary";
+
+  const navigate = useNavigate();
+
   return (
     <button
+      onClick={() => navigate(link)}
       className={classNames(
         `relative btn btn-${type} h-16 justify-start font-bold rounded-xl hover:bg-neutrals-800 hover:border-transparent`,
         {
@@ -21,4 +30,4 @@ const SidebarItem = ({ children, type = "secondary", isActive = false }) => {
   );
 };
 
-export default SidebarItem;
+export default SidebarButtons;

@@ -5,12 +5,12 @@ const Login = () => {
   document.title = "JustSmile | Signup";
 
   return (
-    <div className="flex justify-center items-center w-screen h-screen bg-neutrals-900">
+    <div className="flex justify-center items-center w-screen h-screen bg-neutrals-900 p-2">
       <div className="w-[31rem] h-[29rem] p-7 bg-neutrals-800 rounded-2xl">
         <div className="flex justify-center text-center mb-4 mt-8">
           <img className="w-20" src={Logo} alt="logo" />
         </div>
-        <div className=" mb-8 mt-8 text-4xl font-extrabold text-center text-white us">
+        <div className=" mb-8 mt-8 text-4xl font-bold text-center text-white us">
           S I G N U P
         </div>
         <form>
@@ -37,7 +37,6 @@ const Login = () => {
           />
 
           <div className="flex justify-end mb-4">
-
             <div className="flex justify-end my-5">
               <Link to="/login">
                 <button className="btn bg-neutrals-700 w-28 text-white mx-1 hover:bg-neutrals-700">

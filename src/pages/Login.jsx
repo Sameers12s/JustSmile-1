@@ -5,12 +5,12 @@ const Login = () => {
   document.title = "JustSmile | Login";
 
   return (
-    <div className="flex justify-center items-center w-screen h-screen bg-neutrals-900">
+    <div className="flex justify-center items-center w-screen h-screen bg-neutrals-900 p-2">
       <div className="w-[31rem] h-[27rem] p-7 bg-neutrals-800 rounded-2xl">
         <div className="flex justify-center text-center mb-4 mt-8">
           <img className="w-20" src={Logo} alt="logo" />
         </div>
-        <div className=" mb-8 mt-8 text-4xl font-extrabold text-center text-white us">
+        <div className=" mb-8 mt-8 text-4xl font-bold text-center text-white us">
           L O G I N
         </div>
         <form>
