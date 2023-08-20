@@ -3,7 +3,7 @@ import { IconX } from '@tabler/icons-react';
 import { IconFocusCentered } from '@tabler/icons-react';
 const ProfilePictureCrop = () => {
   return (
-    <div className="flex justify-center items-center h-screen w-screen">
+    <div className="flex justify-center items-center h-full w-">
       <div className="flex flex-col justify-center items-center bg-neutrals-800 h-auto w-full rounded-lg p-4 px-6">
         <div className="flex flex-row justify-between items-center w-full pb-2">
           <div className="flex flex-col items-center">

@@ -1,9 +1,9 @@
-import AddPostPopup from "../components/AddPostPopup";
+import ProfilePictureCrop from "../components/ProfilePictureCrop";
 const Tests = () => {
   document.title = "JustSmile | Test Area";
   return (
     <div>
-      <AddPostPopup />
+      <ProfilePictureCrop />
     </div>
   );
 };
