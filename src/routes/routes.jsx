@@ -3,6 +3,7 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
+import BaseLayout from "../pages/layouts/BaseLayout";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
@@ -10,11 +11,13 @@ import FollowersFollowing from "../pages/FollowersFollowing";
 import Messenger from "../pages/Messenger";
 import Notification from "../pages/Notification";
 import Search from "../pages/Search";
+import Account from "../pages/Account";
 import Setting from "../pages/Setting";
 import PageNotFound from "../pages/PageNotFound";
 import Tests from "../pages/Tests";
 
 export const ROUTES = {
+  BaseLayout: "/",
   HOME: "/home",
   LOGIN: "/login",
   SIGNUP: "/signup",
@@ -31,12 +34,12 @@ const router = createBrowserRouter([
     element: <Navigate replace to="/home" />,
   },
   {
-    path: "/home",
-    element: <Home />,
+    path: "/",
+    element: <BaseLayout />,
     children: [
       {
-        path: "feed",
-        element: <Search />,
+        path: "home",
+        element: <Home />,
       },
       {
         path: "search",
@@ -51,8 +54,16 @@ const router = createBrowserRouter([
         element: <Notification />,
       },
       {
+        path: "account",
+        element: <Account />,
+      },
+      {
         path: "setting",
         element: <Setting />,
+      },
+      {
+        path: "/followers-followings",
+        element: <FollowersFollowing />,
       },
     ],
   },
@@ -63,10 +74,6 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <Signup />,
-  },
-  {
-    path: "/followers-followings",
-    element: <FollowersFollowing />,
   },
   {
     path: "*",

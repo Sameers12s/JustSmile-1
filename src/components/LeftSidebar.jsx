@@ -28,32 +28,32 @@ const LeftSidebar = () => {
         NEW POST
       </button>
 
-      <SidebarButtons isActive={true}>
+      <SidebarButtons isActive={true} link={"home"}>
         <IconTable />
         FEED
       </SidebarButtons>
 
-      <SidebarButtons link={"notification"}>
+      <SidebarButtons link={"notifications"}>
         <IconBell />
         NOTIFICATIONS
       </SidebarButtons>
 
-      <SidebarButtons link={"notification"}>
+      <SidebarButtons link={"messages"}>
         <IconMessageCircle2 />
         MESSAGES
       </SidebarButtons>
 
-      <SidebarButtons>
+      <SidebarButtons link={"search"}>
         <IconSearch />
         SEARCH
       </SidebarButtons>
       <div className="flex-1"></div>
-      <SidebarButtons>
+      <SidebarButtons link={"account"}>
         <IconUser />
         ACCOUNT
       </SidebarButtons>
 
-      <SidebarButtons>
+      <SidebarButtons link={"setting"}>
         <IconSettings />
         SETTINGS
       </SidebarButtons>
