@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        "font-medium": "Montserrat-Medium",
         "font-bold": "Montserrat-Bold",
         sans: ["Montserrat", "sans-serif"],
       },
