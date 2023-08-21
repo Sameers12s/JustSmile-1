@@ -1,12 +1,12 @@
 import { IconX } from '@tabler/icons-react';
 const DeletePopup = () => {
     return (
-        <div className="flex justify-center items-center h-screen w-screen">
+        <div className="flex justify-center items-center h-full w-full">
             <div className="flex flex-col justify-center items-center bg-neutrals-800 h-auto w-full rounded-lg p-4 px-4">
                 <div className="flex flex-row justify-between text-lg pl-6 font-extrabold w-full">
                     <h1 className="flex justify-center items-center text-red-500 text-lg p-2 font-extrabold flex-grow">DANGER</h1>
                     <button type="button" className=" btn-square bg-neutrals-800">
-                    <IconX size={35} color="#718096"/>
+                        <IconX size={35} color="#718096" />
                     </button>
                 </div>
 

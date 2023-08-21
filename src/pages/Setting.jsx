@@ -6,7 +6,7 @@ import AppTheme from "../components/AppTheme";
 const Setting = () => {
   document.title = "JustSmile | Setting";
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col pb-24">
       <div>
         <div className="py-4 font-bold text-neutrals-600">APP THEME</div>
         <AppTheme />
