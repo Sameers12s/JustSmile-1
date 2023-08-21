@@ -1,6 +1,6 @@
 const PersonalDetails = () => {
   return (
-    <div className="flex w-full font-medium">
+    <div className="flex w-full h-full font-medium">
       <div className=" flex flex-col w-full justify-between bg-neutrals-800 rounded-lg">
         <div className="flex flex-row  p-3">
           <h1 className="basis-1/4 mt-8">Profile Picture</h1>
@@ -28,7 +28,7 @@ const PersonalDetails = () => {
           <div className="basis-3/4">
             <input
               className=" textarea bg-neutrals-900 rounded-lg px-3 w-full h-3 mt-4"
-              placeholder="GoodBits"
+              placeholder="JustSmiles"
             ></input>
           </div>
         </div>
