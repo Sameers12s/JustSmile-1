@@ -1,3 +1,4 @@
+import UserImg from "../assets//images/userimg.jpg";
 const PersonalDetails = () => {
   return (
     <div className="flex w-full h-full font-medium">
@@ -8,7 +9,7 @@ const PersonalDetails = () => {
             <div className="flex basis-3/4  max-w-[7rem] rounded-full bg-neutrals-600 text-center">
               <div className="avatar">
                 <div className="max-w-[7rem] rounded-full">
-                  <img src="src/assets/images/userimg.jpg" />
+                  <img src={UserImg} />
                 </div>
               </div>
             </div>
