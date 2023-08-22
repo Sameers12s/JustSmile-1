@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import AuthLayout from "./layouts/AuthLayout";
-import { IconUser } from "@tabler/icons-react";
+import { IconUser, IconLock, IconEye } from "@tabler/icons-react";
 const Login = () => {
   document.title = "JustSmile | Login";
 
@@ -9,21 +9,34 @@ const Login = () => {
       <div className=" my-8 text-4xl font-bold text-center text-white us">
         L O G I N
       </div>
-      <form className="flex flex-col h-full">
-        <input
-          type="email"
-          id="email"
-          placeholder="username"
-          className="input w-full max-w-[27rem] mt-2 rounded-lg focus:ring-blue-300 text-bold"
-          required
-        />
-        <input
-          type="password"
-          id="password"
-          placeholder="password"
-          className="input w-full max-w-[27rem] mt-2 rounded-lg"
-          required
-        />
+      <form className="flex flex-col h-full space-y-2 text-neutrals-600">
+        <div className="join items-center justify-center pl-2 bg-neutrals-900">
+          <div className="join-item ">
+            <IconUser />
+          </div>
+          <input
+            type="email"
+            id="email"
+            placeholder="Username"
+            className="input w-full  rounded-lg text-bold pl-2 focus:outline-none"
+            required
+          />
+        </div>
+        <div className="join items-center justify-center pl-2 bg-neutrals-900 ">
+          <div className="join-item">
+            <IconLock />
+          </div>
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            className="input w-full rounded-lg text-bold pl-2 focus:outline-none"
+            required
+          />
+          <div className="join-item pr-2">
+            <IconEye />
+          </div>
+        </div>
 
         <div className="flex w-full justify-between items-center pt-9">
           <a href="#" className="text-white">
