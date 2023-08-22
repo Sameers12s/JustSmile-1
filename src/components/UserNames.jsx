@@ -7,7 +7,7 @@ const UserNames = () => {
           <img src={UserImg} alt="userimg" />
         </div>
       </div>
-      <div className="px-2">
+      <div className="px-2 text-left">
         <div className="font-bold hover:underline">Username</div>
         <div className="text-neutrals-600">@username</div>
       </div>

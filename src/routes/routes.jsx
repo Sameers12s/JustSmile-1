@@ -15,6 +15,8 @@ import Account from "../pages/Account";
 import Setting from "../pages/Setting";
 import PageNotFound from "../pages/PageNotFound";
 import Tests from "../pages/Tests";
+import SearchAccounts from "../components/SearchAccounts";
+import SearchHashtags from "../components/SearchHashtags";
 
 export const ROUTES = {
   BaseLayout: "/",
@@ -22,10 +24,10 @@ export const ROUTES = {
   LOGIN: "/login",
   SIGNUP: "/signup",
   FOLLOWERS_FOLLOWING: "/followers-followings",
-  MESSENGER: "/home/messages",
-  NOTIFICATION: "/home/notifications",
-  SEARCH: "/home/search",
-  SETTING: "/home/setting",
+  MESSENGER: "/messages",
+  NOTIFICATION: "/notifications",
+  SEARCH: "/search",
+  SETTING: "/setting",
 };
 
 const router = createBrowserRouter([
@@ -44,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "search",
         element: <Search />,
+        children: [
+          { path: "SearchAccounts", element: <SearchAccounts /> },
+          { path: "SearchHashtags", element: <SearchHashtags /> },
+        ],
       },
       {
         path: "messages",
