@@ -15,8 +15,8 @@ const BaseLayout = () => {
 
   return (
     <div className="w-full h-screen">
-      <div className="h-20 w-full top-0 ">
-        <div className="container max-w-7xl mx-auto justify-center">
+      <div className="h-20 w-full top-0 sticky z-50">
+        <div className="container max-w-7xl mx-auto justify-center ">
           <Navbar />
         </div>
       </div>
