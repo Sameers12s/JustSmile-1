@@ -54,10 +54,16 @@ const router = createBrowserRouter([
       {
         path: "messages",
         element: <Messenger />,
+        handle: {
+          hideRightSidebar: "invisible",
+        },
       },
       {
         path: "notifications",
         element: <Notification />,
+        handle: {
+          hideRightSidebar: "invisible",
+        },
       },
       {
         path: "account",
@@ -66,6 +72,9 @@ const router = createBrowserRouter([
       {
         path: "setting",
         element: <Setting />,
+        handle: {
+          hideRightSidebar: "invisible",
+        },
       },
       {
         path: "/followers-followings",
