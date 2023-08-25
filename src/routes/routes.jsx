@@ -55,14 +55,14 @@ const router = createBrowserRouter([
         path: "messages",
         element: <Messenger />,
         handle: {
-          hideRightSidebar: "invisible",
+          hideRightSidebar: "lg:hidden",
         },
       },
       {
         path: "notifications",
         element: <Notification />,
         handle: {
-          hideRightSidebar: "invisible",
+          hideRightSidebar: "lg:hidden",
         },
       },
       {
@@ -73,7 +73,7 @@ const router = createBrowserRouter([
         path: "setting",
         element: <Setting />,
         handle: {
-          hideRightSidebar: "invisible",
+          hideRightSidebar: "lg:hidden",
         },
       },
       {

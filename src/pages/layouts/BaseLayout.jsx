@@ -25,12 +25,11 @@ const BaseLayout = () => {
           <div className="min-w-[18rem] hidden lg:block">
             <LeftSidebar />
           </div>
-          <div className="flex-1 max-w-[42rem] px-2">
+          <div className="flex-1 h-full px-2">
             <Outlet />
           </div>
-          <div
-            className={`min-w-[20rem] max-w-[20rem] hidden xl:block bg-neutrals-900 ${visibility}`}
-          >
+
+          <div className={` ${visibility}`}>
             <RightSidebar />
           </div>
         </div>
