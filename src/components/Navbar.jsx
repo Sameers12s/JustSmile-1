@@ -11,10 +11,10 @@ const Navbar = () => {
             tabIndex={0}
             className="btn btn-wide btn-ghost hover:bg-secondary justify-start"
           >
-            <div className="lg:hidden">
+            <a className="lg:hidden" href="/home">
               <img className="w-14 h-10" src={Logo} alt="logo" />
-            </div>
-            <a className="text-xl hidden lg:block" href="/">
+            </a>
+            <a className="text-xl hidden lg:block" href="/home">
               JUST SMILES.
             </a>
           </label>

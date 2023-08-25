@@ -19,7 +19,7 @@ const LeftSidebar = () => {
   }
 
   return (
-    <div className="flex flex-col h-full p-4 pt-0 space-y-1">
+    <div className="flex flex-col h-full p-4 pt-0 space-y-1 ">
       <button
         className="btn btn-primary justify-start h-16 rounded-xl font-bold"
         onClick={open}
