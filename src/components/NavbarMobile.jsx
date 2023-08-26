@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import AddPostPopup from "./AddPostPopup";
-import NavbarButtonMobile from "./NavbarButtonMobile";
+import SidebarButtons from "./SidebarButtons";
 import {
   IconBell,
   IconMessageCircle2,
@@ -20,14 +20,14 @@ const NavbarMobile = () => {
 
   return (
     <div className="flex flex-row w-full h-full items-center">
-      <NavbarButtonMobile isActive={false} link={"home"}>
+      <SidebarButtons isActive={false} link={"home"}>
         <IconTable />
-      </NavbarButtonMobile>
+      </SidebarButtons>
       <div className="flex-1"></div>
 
-      <NavbarButtonMobile link={"notifications"}>
+      <SidebarButtons link={"notifications"}>
         <IconBell />
-      </NavbarButtonMobile>
+      </SidebarButtons>
       <div className="flex-1"></div>
       <button
         className="btn btn-primary justify-start h-14 rounded-xl font-bold"
@@ -37,14 +37,14 @@ const NavbarMobile = () => {
       </button>
       <div className="flex-1"></div>
 
-      <NavbarButtonMobile link={"messages"}>
+      <SidebarButtons link={"messages"}>
         <IconMessageCircle2 />
-      </NavbarButtonMobile>
+      </SidebarButtons>
       <div className="flex-1"></div>
 
-      <NavbarButtonMobile link={"search"}>
+      <SidebarButtons link={"search"}>
         <IconSearch />
-      </NavbarButtonMobile>
+      </SidebarButtons>
 
       <dialog ref={modal}>
         <AddPostPopup close={() => modal.current?.hideModal()} />

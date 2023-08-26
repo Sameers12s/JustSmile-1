@@ -5,7 +5,7 @@ const ChartArea = () => {
     <div className="join-item flex flex-col flex-1 h-full rounded-lg bg-neutrals-800">
       <div className="w-full h-16 text-center ">
         <div className="flex flex-1 h-full items-center px-3">
-          <UserNames />
+          <UserNames IndicatorNeed={true} MoreOptionNeed={true} />
         </div>
       </div>
 

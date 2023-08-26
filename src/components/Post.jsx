@@ -1,4 +1,3 @@
-import UserImg from "../assets//images/userimg.jpg";
 import UserNames from "./UserNames";
 import {
   IconDotsVertical,
@@ -10,10 +9,7 @@ const Post = () => {
   return (
     <div className="flex flex-col w-full min-h-48 bg-neutrals-800 rounded-lg">
       <div className="flex flex-row w-full h-18 items-center p-2">
-        <UserNames />
-        <div className="flex btn rounded-full bg-neutrals-800 border-transparent text-neutrals-600">
-          <IconDotsVertical />
-        </div>
+        <UserNames MoreOptionNeed={true} />
       </div>
       <div className="w-full flex-1 px-4 py-1">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus,
