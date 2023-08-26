@@ -6,9 +6,8 @@ const SidebarButtons = ({
   type = "secondary",
   isActive = false,
   link = "/",
+  onClick,
 }) => {
-  "btn-primary";
-
   const navigate = useNavigate();
 
   return (

@@ -15,8 +15,8 @@ import Account from "../pages/Account";
 import Setting from "../pages/Setting";
 import PageNotFound from "../pages/PageNotFound";
 import Tests from "../pages/Tests";
-import SearchAccounts from "../components/SearchAccounts";
-import SearchHashtags from "../components/SearchHashtags";
+import SearchAccounts from "../components/SearchComponents/SearchAccounts";
+import SearchHashtags from "../components/SearchComponents/SearchHashtags";
 
 export const ROUTES = {
   BaseLayout: "/",

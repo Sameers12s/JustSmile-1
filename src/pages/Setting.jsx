@@ -1,8 +1,8 @@
-import PersonalDetails from "../components/PersonalDetails";
-import SocialLinks from "../components/SocialLinks";
-import Security from "../components/Security";
-import DangerZone from "../components/DangerZone";
-import AppTheme from "../components/AppTheme";
+import AppTheme from "../components/SettingsComponents/AppTheme";
+import PersonalDetails from "../components/SettingsComponents/PersonalDetails";
+import SocialLinks from "../components/SettingsComponents/SocialLinks";
+import Security from "../components/SettingsComponents/Security";
+import DangerZone from "../components/SettingsComponents/DangerZone";
 const Setting = () => {
   document.title = "JustSmile | Setting";
   return (
