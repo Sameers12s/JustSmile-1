@@ -2,7 +2,7 @@ import UserNames from "./UserNames";
 import { IconSearch } from "@tabler/icons-react";
 const FriendsTab = (props) => {
   return (
-    <div className="join-item flex flex-col w-72 h-full rounded-lg bg-neutrals-800">
+    <div className="join-item flex flex-col w-72 h-full rounded-lg bg-neutrals-800 ">
       <div className="w-full h-16 font-bold text-neutrals-600 text-center text-lg py-4">
         {props.title}
       </div>
