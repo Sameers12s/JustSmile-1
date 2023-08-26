@@ -1,7 +1,7 @@
-import Navbar from "../../components/Navbar";
-import LeftSidebar from "../../components/LeftSidebar";
-import RightSidebar from "../../components/RightSidebar";
-import NavbarMobile from "../../components/NavbarMobile";
+import Navbar from "../../components/BaselayoutComponents/Navbar";
+import LeftSidebar from "../../components/BaselayoutComponents/LeftSidebar";
+import RightSidebar from "../../components/BaselayoutComponents/RightSidebar";
+import NavbarMobile from "../../components/BaselayoutComponents/NavbarMobile";
 import { Outlet, useFetcher, useMatch, useMatches } from "react-router-dom";
 
 const BaseLayout = () => {

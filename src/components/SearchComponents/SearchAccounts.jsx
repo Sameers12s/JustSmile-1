@@ -1,4 +1,4 @@
-import UserNames from "../components/UserNames";
+import UserNames from "../UserNames";
 const SearchAccounts = () => {
   document.title = "JustSmile | Search - Accounts";
   return (

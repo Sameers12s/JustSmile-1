@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { IconSearch } from "@tabler/icons-react";
 import SearchbarItem from "./SearchbarItem";
-import SearchHashtags from "./SearchHashtags";
 
 const SearchBar = () => {
   const [activeTab, setActiveTab] = useState("ACCOUNTS");

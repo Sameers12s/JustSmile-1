@@ -1,18 +1,8 @@
-import UserImg from "../assets/images/userimg.jpg";
-
+import UserNames from "../UserNames";
 const Notifiy = () => {
   return (
     <div className="flex flex-row justify-center items-center bg-neutrals-800 h-20 w-full rounded-lg p-4">
-      <button className="flex flex-row h-full">
-        <div className="flex h-full items-center avatar">
-          <div className="w-10 rounded-full hover:bg-slate-200">
-            <img src={UserImg} alt="userimg" />
-          </div>
-        </div>
-        <div className="flex h-full items-center px-2 font-bold hover:underline">
-          <div>Username</div>
-        </div>
-      </button>
+      <UserNames ExtraInfo={null} />
       <div className="flex w-full h-full text-start items-center ">
         <div className="font-normal">
           Liked your post:{" "}

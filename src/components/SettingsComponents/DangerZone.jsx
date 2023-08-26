@@ -1,4 +1,4 @@
-import DangerImg from "../assets/images/3694486fe7d9cc69aa37c9102557f371.png";
+import DangerImg from "../../assets/images/3694486fe7d9cc69aa37c9102557f371.png";
 const DangerZone = () => {
   return (
     <div className="flex h-full w-full items-center justify-center overflow-hidden">

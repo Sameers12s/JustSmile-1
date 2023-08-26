@@ -1,4 +1,4 @@
-import UserImg from "../assets//images/userimg.jpg";
+import UserImg from "../../assets/images/userimg.jpg";
 const PersonalDetails = () => {
   return (
     <div className="flex w-full h-full font-medium">

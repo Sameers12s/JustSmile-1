@@ -1,4 +1,4 @@
-import Notifiy from "../components/Notifiy";
+import Notifiy from "../components/NotificationComponents/Notifiy";
 const Notification = () => {
   document.title = "JustSmile | Notification";
   return (

@@ -1,4 +1,3 @@
-import React from "react";
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +19,7 @@ const SearchbarItem = ({
     <button
       onClick={handleClick}
       className={classNames(
-        `relative h-full justify-start font-bold rounded-xl hover:border-transparent`,
+        `relative h-full justify-start font-bold rounded-xl hover:bg-neutrals-800 hover:border-transparent`,
         {
           "bg-transparent": !isActive,
           "border-transparent": !isActive,
