@@ -1,5 +1,5 @@
 import { IconCircleArrowRight } from "@tabler/icons-react";
-import UserNames from "../components/UserNames";
+import UserNames from "../UserNames";
 const ChartArea = () => {
   return (
     <div className="join-item flex flex-col flex-1 h-full rounded-lg bg-neutrals-800">

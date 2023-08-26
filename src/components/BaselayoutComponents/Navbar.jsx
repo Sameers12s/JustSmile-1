@@ -1,5 +1,5 @@
-import Avatar from "../assets/images/user-default-96x96.png";
-import Logo from "../assets/images/logo.svg";
+import Avatar from "../../assets/images/user-default-96x96.png";
+import Logo from "../../assets/images/logo.svg";
 import { IconSearch, IconBell } from "@tabler/icons-react";
 
 const Navbar = () => {

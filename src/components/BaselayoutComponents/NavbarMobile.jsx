@@ -1,6 +1,6 @@
 import { useRef } from "react";
-import AddPostPopup from "./AddPostPopup";
-import SidebarButtons from "./SidebarButtons";
+import AddPostPopup from "../Popups/AddPostPopup";
+import SidebarButtons from "../SidebarButtons";
 import {
   IconBell,
   IconMessageCircle2,

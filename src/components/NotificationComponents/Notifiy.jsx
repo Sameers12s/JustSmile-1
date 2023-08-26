@@ -1,4 +1,4 @@
-import UserNames from "./UserNames";
+import UserNames from "../UserNames";
 const Notifiy = () => {
   return (
     <div className="flex flex-row justify-center items-center bg-neutrals-800 h-20 w-full rounded-lg p-4">
