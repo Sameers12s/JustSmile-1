@@ -1,6 +1,7 @@
 import Avatar from "../../assets/images/user-default-96x96.png";
 import Logo from "../../assets/images/logo.svg";
 import { IconSearch, IconBell } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -24,15 +25,18 @@ const Navbar = () => {
         <img className="w-14 h-10" src={Logo} alt="logo" />
       </div>
       <div className="navbar-end">
-        <button className="btn btn-ghost btn-circle w-5">
-          <IconSearch />
-        </button>
-        <button className="btn btn-ghost btn-circle">
-          <div className="indicator w-5">
-            <IconBell />
-            <span className="badge badge-xs badge-primary indicator-item"></span>
-          </div>
-        </button>
+        <Link to="search">
+          <button className="btn btn-ghost btn-circle">
+
+            <IconSearch />
+          </button></Link>
+        <Link to="notifications">
+          <button className="btn btn-ghost btn-circle">
+            <div className="indicator w-5" >
+              <IconBell />
+              <span className="badge badge-xs badge-primary indicator-item"></span>
+            </div>
+          </button></Link>
       </div>
       <div className="dropdown dropdown-end">
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -45,20 +49,21 @@ const Navbar = () => {
           className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
         >
           <li>
-            <a className="justify-between">
+            <a className="justify-between" href="account">
               Profile
               <span className="badge">New</span>
             </a>
           </li>
           <li>
-            <a>Settings</a>
+            <a href="setting">Settings</a>
+
           </li>
           <li>
-            <a>Logout</a>
+            <a >Logout</a>
           </li>
         </ul>
       </div>
-    </nav>
+    </nav >
   );
 };
 

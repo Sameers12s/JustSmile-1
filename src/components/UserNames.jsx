@@ -1,5 +1,6 @@
-import UserImg from "../assets//images/userimg.jpg";
+import UserImg from "../assets/images/userimg.jpg";
 import { IconDotsVertical } from "@tabler/icons-react";
+
 const UserNames = (props) => {
   return (
     <div className="flex flex-1 flex-row">
@@ -12,7 +13,7 @@ const UserNames = (props) => {
         <div className="flex h-full items-center px-2 font-bold">
           <div className="flex flex-col text-left">
             <div className="hover:underline truncate">{props.Name}</div>
-            <div className=" font-normal text-neutrals-600">
+            <div className="font-normal text-neutrals-600">
               {props.ExtraInfo}
             </div>
           </div>
@@ -25,13 +26,31 @@ const UserNames = (props) => {
         </div>
       ) : null}
       {props.MoreOptionNeed ? (
-        <div className="flex btn rounded-full bg-neutrals-800 border-transparent text-neutrals-600">
-          <IconDotsVertical />
-        </div>
+        <details className="dropdown dropdown-bottom dropdown-end">
+          <summary className="m-1 btn bg-transparent border-transparent rounded-full"><IconDotsVertical /></summary>
+          <div className="dropdown dropdown-end">
+            <ul
+              className="dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a className="justify-between" href="account">
+                  Profile
+                </a>
+              </li>
+              <li>
+                <a>Save</a>
+              </li>
+              <li>
+                <a>Hide</a>
+              </li>
+            </ul>
+          </div>
+        </details>
       ) : null}
     </div>
   );
 };
+
 export default UserNames;
 
 UserNames.defaultProps = {

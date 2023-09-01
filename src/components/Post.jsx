@@ -1,6 +1,5 @@
 import UserNames from "./UserNames";
 import {
-  IconDotsVertical,
   IconHeart,
   IconShare,
   IconMessage,
