@@ -21,14 +21,14 @@ const Account = () => {
             isActive={activeTab === "YOUR POST"}
             onClick={() => handleTabClick("YOUR POST")}
           >
-            <h1 className="px-2">YOUR POST</h1>
+            <h1 className="px-4">YOUR POST</h1>
           </SearchbarItem>
 
           <SearchbarItem
             isActive={activeTab === "LIKED BY YOU"}
             onClick={() => handleTabClick("LIKED BY YOU")}
           >
-            <h1>LIKED BY YOU</h1>
+            <h1 className="px-4">LIKED BY YOU</h1>
           </SearchbarItem>
         </div>
 

@@ -14,7 +14,7 @@ const Accounts = () => {
         <div className="flex  h-full w-full">
           <UserNames />
         </div>
-        <button className="flex h-full items-center pr-2 rounded-full text-neutrals-600">
+        <button className="flex h-full items-center pr-2 rounded-full text-neutrals-600 hover:text-neutrals-400">
           <a href="setting"><IconEdit stroke={2} size={28} /></a>
         </button>
       </div>
@@ -27,13 +27,13 @@ const Accounts = () => {
       </div>
       <div className="flex flex-row w-full p-4 text-neutrals-600">
         <div className="flex flex-row font-bold text-sm">
-          <button className="flex h-full items-center pr-2 rounded-full">
+          <button className="flex h-full items-center pr-2 rounded-full hover:text-black">
             <IconBrandGithub stroke={2} size={28} />
           </button>
-          <button className="flex px-2 items-center">
+          <button className="flex px-2 items-center hover:text-blue-600">
             <IconBrandTwitterFilled stroke={2} size={28} />
           </button>
-          <button className="flex px-2 items-center">
+          <button className="flex px-2 items-center hover:text-blue-400">
             <IconBrandLinkedin stroke={2} size={28} />
           </button>
         </div>

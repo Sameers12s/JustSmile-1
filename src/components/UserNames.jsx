@@ -27,10 +27,10 @@ const UserNames = (props) => {
       ) : null}
       {props.MoreOptionNeed ? (
         <details className="dropdown dropdown-bottom dropdown-end">
-          <summary className="m-1 btn bg-transparent border-transparent rounded-full"><IconDotsVertical /></summary>
+          <summary className="m-1 btn bg-transparent border-transparent shadow-bg-neutrals-100 rounded-full text-neutrals-600 hover:text-neutrals-400"><IconDotsVertical /></summary>
           <div className="dropdown dropdown-end">
             <ul
-              className="dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-32"
             >
               <li>
                 <a className="justify-between" href="account">
