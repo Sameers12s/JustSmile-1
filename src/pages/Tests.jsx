@@ -1,8 +1,11 @@
+import Accounts from "../components/AccountComponents/Accounts";
+import Notification from "./Notification";
+
+
 const Tests = () => {
   document.title = "JustSmile | Test Area";
   return (
     <div>
-      <ProfilePictureCrop />
       <Accounts />
       <Notification />
     </div>

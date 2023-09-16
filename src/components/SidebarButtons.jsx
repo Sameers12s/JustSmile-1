@@ -10,9 +10,14 @@ const SidebarButtons = ({
 }) => {
   const navigate = useNavigate();
 
+  const handleClick = () => {
+    navigate(link);
+    onClick(link); // Notify parent about the button click
+  };
+
   return (
     <button
-      onClick={() => navigate(link)}
+      onClick={handleClick}
       className={classNames(
         `relative btn btn-${type} h-16 justify-start font-bold rounded-xl hover:bg-neutrals-800 hover:border-transparent`,
         {

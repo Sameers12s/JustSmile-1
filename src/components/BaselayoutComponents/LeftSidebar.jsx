@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { useRef, useState } from "react";
 import AddPostPopup from "../Popups/AddPostPopup";
 import SidebarButtons from "../SidebarButtons";
 import {
@@ -13,10 +13,15 @@ import {
 
 const LeftSidebar = () => {
   const modal = useRef();
+  const [activeTab, setActiveTab] = useState("home");
 
   function open() {
     modal.current?.showModal();
   }
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+  };
 
   return (
     <div className="flex flex-col h-full p-4 pt-0 space-y-1 ">
@@ -28,32 +33,56 @@ const LeftSidebar = () => {
         NEW POST
       </button>
 
-      <SidebarButtons isActive={true} link={"home"}>
+      <SidebarButtons
+        isActive={activeTab === "home"}
+        onClick={() => handleTabClick("home")}
+        link={"home"}
+      >
         <IconTable />
         FEED
       </SidebarButtons>
 
-      <SidebarButtons link={"notifications"}>
+      <SidebarButtons
+        isActive={activeTab === "notifications"}
+        onClick={() => handleTabClick("notifications")}
+        link={"notifications"}
+      >
         <IconBell />
         NOTIFICATIONS
       </SidebarButtons>
 
-      <SidebarButtons link={"messages"}>
+      <SidebarButtons
+        isActive={activeTab === "messages"}
+        onClick={() => handleTabClick("messages")}
+        link={"messages"}
+      >
         <IconMessageCircle2 />
         MESSAGES
       </SidebarButtons>
 
-      <SidebarButtons link={"search"}>
+      <SidebarButtons
+        isActive={activeTab === "search"}
+        onClick={() => handleTabClick("search")}
+        link={"search"}
+      >
         <IconSearch />
         SEARCH
       </SidebarButtons>
       <div className="flex-1"></div>
-      <SidebarButtons link={"account"}>
+      <SidebarButtons
+        isActive={activeTab === "account"}
+        onClick={() => handleTabClick("account")}
+        link={"account"}
+      >
         <IconUser />
         ACCOUNT
       </SidebarButtons>
 
-      <SidebarButtons link={"setting"}>
+      <SidebarButtons
+        isActive={activeTab === "setting"}
+        onClick={() => handleTabClick("setting")}
+        link={"setting"}
+      >
         <IconSettings />
         SETTINGS
       </SidebarButtons>

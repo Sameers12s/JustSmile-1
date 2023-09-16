@@ -25,7 +25,8 @@ const FriendsTab = (props) => {
       <div className="flex-1 px-4">
         <UserNames IndicatorNeed={true} />
       </div>
-      <div className="flex justify-center p-4">
+      <div className="flex justify-center p-4" >
+
         <button className="btn w-full bg-neutrals-700">
           {props.ButtonName}
         </button>

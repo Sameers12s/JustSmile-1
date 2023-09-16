@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { IconSearch } from "@tabler/icons-react";
 import SearchbarItem from "./SearchbarItem";
 
-const SearchBar = () => {
-  const [activeTab, setActiveTab] = useState("ACCOUNTS");
+const SearchBar = (props) => {
+  const [activeTab, setActiveTab] = useState(props.lefttab);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -17,7 +17,7 @@ const SearchBar = () => {
         <div className="join items-center justify-center bg-neutrals-900 w-full">
           <input
             id="email"
-            placeholder="Search accounts or posts by hashtags"
+            placeholder={props.searchbar}
             className="h-16 input w-full rounded-lg text-bold pl-2 focus:outline-none"
             required
           />
@@ -30,21 +30,21 @@ const SearchBar = () => {
       <div className="flex flex-row w-full justify-center items-center py-4">
         <div className="flex w-full justify-center border-r-2 border-r-neutrals-900">
           <SearchbarItem
-            isActive={activeTab === "ACCOUNTS"}
-            onClick={() => handleTabClick("ACCOUNTS")}
-            link={"SearchAccounts"}
+            isActive={activeTab === props.lefttab}
+            onClick={() => handleTabClick(props.lefttab)}
+            link={props.link.link}
           >
-            ACCOUNTS
+            {props.lefttab}
           </SearchbarItem>
         </div>
 
         <div className="flex w-full justify-center">
           <SearchbarItem
-            isActive={activeTab === "HASHTAGS"}
-            onClick={() => handleTabClick("HASHTAGS")}
-            link={"SearchHashtags"}
+            isActive={activeTab === props.righttab}
+            onClick={() => handleTabClick(props.righttab)}
+            link={props.link.link1}
           >
-            HASHTAGS
+            {props.righttab}
           </SearchbarItem>
         </div>
       </div>
@@ -53,3 +53,8 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
+
+SearchBar.defaultProps = {
+  link: "",
+  link1: "",
+}
