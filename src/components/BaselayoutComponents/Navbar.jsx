@@ -2,8 +2,10 @@ import Avatar from "../../assets/images/user-default-96x96.png";
 import Logo from "../../assets/images/logo.svg";
 import { IconSearch, IconBell } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/auth-context";
 
 const Navbar = () => {
+  const { logout } = useAuth();
   return (
     <nav className="navbar bg-secondary text-white">
       <div className="navbar-start">
@@ -27,16 +29,17 @@ const Navbar = () => {
       <div className="navbar-end">
         <Link to="search">
           <button className="btn btn-ghost btn-circle">
-
             <IconSearch />
-          </button></Link>
+          </button>
+        </Link>
         <Link to="notifications">
           <button className="btn btn-ghost btn-circle">
-            <div className="indicator w-5" >
+            <div className="indicator w-5">
               <IconBell />
               <span className="badge badge-xs badge-primary indicator-item"></span>
             </div>
-          </button></Link>
+          </button>
+        </Link>
       </div>
       <div className="dropdown dropdown-end">
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -56,14 +59,15 @@ const Navbar = () => {
           </li>
           <li>
             <a href="setting">Settings</a>
-
           </li>
           <li>
-            <a >Logout</a>
+            <a onClick={logout} href={"/login"}>
+              Logout
+            </a>
           </li>
         </ul>
       </div>
-    </nav >
+    </nav>
   );
 };
 

@@ -87,7 +87,7 @@ const LeftSidebar = () => {
         SETTINGS
       </SidebarButtons>
 
-      <dialog ref={modal}>
+      <dialog className="modal modal-bottom sm:modal-middle" ref={modal}>
         <AddPostPopup close={() => modal.current?.hideModal()} />
       </dialog>
     </div>
