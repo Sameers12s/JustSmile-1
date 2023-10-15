@@ -1,7 +1,7 @@
 import { IconPaperclip, IconX } from "@tabler/icons-react";
 const AddPostPopup = ({ close }) => {
   return (
-    <div className="flex w-[37rem] bg-neutrals-800 rounded-2xl flex-col justify-between">
+    <div className="modal-box  flex w-[37rem] bg-neutrals-800 rounded-2xl flex-col justify-between ">
       <div className="flex items-center px-4 pt-4">
         <div className=" w-full flex justify-center text-center ">
           <div className="text-neutral-100 font-extrabold text-xl">

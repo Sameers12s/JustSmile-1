@@ -1,15 +1,35 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, Navigate } from "react-router-dom";
 import AuthLayout from "./layouts/AuthLayout";
 import { IconUser, IconLock, IconEye } from "@tabler/icons-react";
+import { useAuth } from "../context/auth-context";
 const Login = () => {
   document.title = "JustSmile | Login";
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { currentUser, login } = useAuth();
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    try {
+      await login(email, password);
+    } catch (error) {
+      console.error("Error during signup", error);
+    }
+  };
+  if (currentUser !== null) {
+    return <Navigate to={"/home"} />;
+  }
 
   return (
     <AuthLayout>
       <div className=" my-8 text-4xl font-bold text-center text-white us">
         L O G I N
       </div>
-      <form className="flex flex-col h-full space-y-2 text-neutrals-600">
+      <form
+        className="flex flex-col h-full space-y-2 text-neutrals-600"
+        onSubmit={handleSignup}
+      >
         <div className="join items-center justify-center pl-2 bg-neutrals-900">
           <div className="join-item ">
             <IconUser />
@@ -19,6 +39,8 @@ const Login = () => {
             id="email"
             placeholder="Username"
             className="input w-full  rounded-lg text-bold pl-2 focus:outline-none"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
@@ -31,6 +53,8 @@ const Login = () => {
             id="password"
             placeholder="Password"
             className="input w-full rounded-lg text-bold pl-2 focus:outline-none"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
           <div className="join-item pr-2">
