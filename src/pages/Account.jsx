@@ -39,8 +39,12 @@ const Account = () => {
             <details className="dropdown dropdown-bottom dropdown-end">
               <summary className="btn">SORT BY</summary>
               <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-36">
-                <li><a>MOST LIKED</a></li>
-                <li><a>RECENT</a></li>
+                <li>
+                  <a>MOST LIKED</a>
+                </li>
+                <li>
+                  <a>RECENT</a>
+                </li>
               </ul>
             </details>
           </div>
@@ -48,9 +52,7 @@ const Account = () => {
           {/**  ----------------------------- */}
         </div>
       </div>
-      <div>
-        <Post />
-      </div>
+      <div>{/* <Post /> */}</div>
     </div>
   );
 };

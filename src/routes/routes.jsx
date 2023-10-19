@@ -17,8 +17,8 @@ import PageNotFound from "../pages/PageNotFound";
 import Tests from "../pages/Tests";
 import SearchAccounts from "../components/SearchComponents/SearchAccounts";
 import SearchHashtags from "../components/SearchComponents/SearchHashtags";
-import Followers from "../components/FollowersFollowingComponents/Followers"
-import Following from "../components/FollowersFollowingComponents/Following"
+import Followers from "../components/FollowersFollowingComponents/Followers";
+import Following from "../components/FollowersFollowingComponents/Following";
 
 export const ROUTES = {
   BaseLayout: "/",

@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IconSearch } from "@tabler/icons-react";
 import SearchbarItem from "./SearchbarItem";
+import searchUserByNameOrUsername from "../api/searchUserByNameOrUsername";
 
 const SearchBar = (props) => {
+  const [nameOrUsername, setNameOrUsername] = useState("");
   const [activeTab, setActiveTab] = useState(props.lefttab);
+
+  useEffect(() => {
+    props.setSearchTerm(nameOrUsername);
+  }, [nameOrUsername]);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
+  };
+  const handleSearch = (event) => {
+    event.preventDefault();
+    searchUserByNameOrUsername(nameOrUsername);
   };
   return (
     <div className="flex flex-col bg-neutrals-800 h-full w-full rounded-lg mb-3">
@@ -14,17 +24,25 @@ const SearchBar = (props) => {
         <div className="flex justify-start items-start font-bold text-lg pb-4">
           SEARCH
         </div>
-        <div className="join items-center justify-center bg-neutrals-900 w-full">
+        <form
+          className="join items-center justify-center bg-neutrals-900 w-full"
+          onSubmit={handleSearch}
+        >
           <input
-            id="email"
             placeholder={props.searchbar}
             className="h-16 input w-full rounded-lg text-bold pl-2 focus:outline-none"
             required
+            value={nameOrUsername}
+            onChange={(e) => setNameOrUsername(e.target.value)}
           />
-          <div className="join-item pr-2 rounded-full ">
+          <button
+            className="join-item pr-2 rounded-full "
+            type="submit"
+            value="submit"
+          >
             <IconSearch />
-          </div>
-        </div>
+          </button>
+        </form>
       </div>
 
       <div className="flex flex-row w-full justify-center items-center py-4">
@@ -57,4 +75,4 @@ export default SearchBar;
 SearchBar.defaultProps = {
   link: "",
   link1: "",
-}
+};

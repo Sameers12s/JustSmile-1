@@ -1,7 +1,16 @@
+import { useQueryClient } from "react-query";
+import deletePost from "../api/deletePost";
 import UserImg from "../assets/images/userimg.jpg";
 import { IconDotsVertical } from "@tabler/icons-react";
+import { useAuth } from "../context/auth-context";
 
 const UserNames = (props) => {
+  const queryClient = useQueryClient();
+  const { currentUser } = useAuth();
+  const handleDelete = () => {
+    deletePost(props.postDocId);
+    queryClient.resetQueries({ queryKey: ["postList", currentUser.uid] });
+  };
   return (
     <div className="flex flex-1 flex-row">
       <button className="flex flex-row h-12">
@@ -27,18 +36,18 @@ const UserNames = (props) => {
       ) : null}
       {props.MoreOptionNeed ? (
         <details className="dropdown dropdown-bottom dropdown-end">
-          <summary className="m-1 btn bg-transparent border-transparent shadow-bg-neutrals-100 rounded-full text-neutrals-600 hover:text-neutrals-400"><IconDotsVertical /></summary>
+          <summary className="m-1 btn bg-transparent border-transparent shadow-bg-neutrals-100 rounded-full text-neutrals-600 hover:text-neutrals-400">
+            <IconDotsVertical />
+          </summary>
           <div className="dropdown dropdown-end">
-            <ul
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-32"
-            >
+            <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-32">
               <li>
                 <a className="justify-between" href="account">
                   Profile
                 </a>
               </li>
               <li>
-                <a>Save</a>
+                <button onClick={handleDelete}>Delete</button>
               </li>
               <li>
                 <a>Hide</a>

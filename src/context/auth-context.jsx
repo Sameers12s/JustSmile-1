@@ -1,12 +1,21 @@
 import { useContext, useState, useEffect, createContext } from "react";
-import { auth } from "../services/firebase";
+import { auth, firestore } from "../services/firebase";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
   updatePassword as updatePasswordFB,
+  updateProfile,
 } from "firebase/auth";
+import {
+  collection,
+  getDocs,
+  doc,
+  query,
+  where,
+  setDoc,
+} from "firebase/firestore";
 
 const AuthContext = createContext();
 
@@ -18,22 +27,45 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  async function signup(email, password, confirmPassword, name, username) {
-    // email, password, confirmpassword, username, name
-    // [x] match password and confirm password
-    // [ ] check if username is unique and available else error
-    // [x] create user and login
-    // [x] update profile with profilePic and Name
-    // [ ] store username in firestore in doc(users/<uid>/)
-    // [ ] redirect to settings
+  async function signup(name, username, email, password, confirmPassword) {
     if (password !== confirmPassword)
-      return { success: false, error: "Passwords do not match" };
+      return {
+        success: false,
+        error: console.log("Passwords do not match"),
+      };
+    const searchUsername = await query(
+      collection(firestore, "users"),
+      where("username", "==", username)
+    );
+    const querySnapshot = await getDocs(searchUsername);
+    if (!querySnapshot.empty) {
+      return {
+        success: false,
+        error: console.log("Username is already taken"),
+      };
+    }
 
-    const newUser = await createUserWithEmailAndPassword(auth, email, password);
-    newUser.updateProfile({
+    const newUserCred = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const newUser = newUserCred.user;
+    await updateProfile(newUser, {
       displayName: name,
-      photoURL: "https://example.com/jane-q-user/profile.jpg",
     });
+
+    const userRef = doc(firestore, "users", newUser.uid);
+    await setDoc(userRef, {
+      name,
+      username: "@" + username,
+      bio: "",
+      githubp: "",
+      linkedinp: "",
+      profile_img: "",
+      twitterp: "",
+    });
+
     return {
       success: true,
       user: newUser,

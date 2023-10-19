@@ -10,12 +10,14 @@ const SignUpPage = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const { currentUser, signup } = useAuth();
 
-  const handleSignup = async () => {
+  const handleSignup = async (event) => {
+    event.preventDefault();
     try {
-      await signup(name, username, email, password);
+      await signup(name, username, email, password, confirmPassword);
     } catch (error) {
       console.error("Error during signup", error);
     }
@@ -30,7 +32,10 @@ const SignUpPage = () => {
       <div className=" my-8 text-4xl font-bold text-center text-white us tracking-[.5rem]">
         SIGNUP
       </div>
-      <div className="flex flex-col h-full space-y-2 text-neutrals-600">
+      <form
+        className="flex flex-col h-full space-y-2 text-neutrals-600"
+        onSubmit={handleSignup}
+      >
         <div className="join items-center justify-center pl-2 bg-neutrals-900 ">
           <div className="join-item ">
             <IconUser />
@@ -84,6 +89,7 @@ const SignUpPage = () => {
             className="input w-full rounded-lg text-bold pl-2 focus:outline-none"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
         <div className="join items-center justify-center pl-2 bg-neutrals-900 ">
@@ -95,6 +101,8 @@ const SignUpPage = () => {
             id="ConfirmPassword"
             placeholder="Confirm Password"
             className="input w-full rounded-lg text-bold pl-2 focus:outline-none"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
         </div>
@@ -108,13 +116,14 @@ const SignUpPage = () => {
             </Link>
             <button
               className="btn bg-primary text-white mx-1 w-28 border-spacing-1 hover:bg-blue-500"
-              onClick={handleSignup}
+              type="submit"
+              value="submit"
             >
               SIGN UP
             </button>
           </div>
         </div>
-      </div>
+      </form>
     </AuthLayout>
   );
 };
