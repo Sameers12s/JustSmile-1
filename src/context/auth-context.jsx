@@ -58,7 +58,7 @@ export function AuthProvider({ children }) {
     const userRef = doc(firestore, "users", newUser.uid);
     await setDoc(userRef, {
       name,
-      username: "@" + username,
+      username,
       bio: "",
       githubp: "",
       linkedinp: "",

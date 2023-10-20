@@ -1,4 +1,4 @@
-import { collection, deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
+import { deleteDoc, doc, getDoc, setDoc } from "firebase/firestore";
 import { firestore } from "../services/firebase";
 
 async function createPostLike(uid, postDocId) {

@@ -1,5 +1,5 @@
 import { useQueryClient } from "react-query";
-import deletePost from "../api/deletePost";
+
 import UserImg from "../assets/images/userimg.jpg";
 import { IconDotsVertical } from "@tabler/icons-react";
 import { useAuth } from "../context/auth-context";
@@ -7,10 +7,7 @@ import { useAuth } from "../context/auth-context";
 const UserNames = (props) => {
   const queryClient = useQueryClient();
   const { currentUser } = useAuth();
-  const handleDelete = () => {
-    deletePost(props.postDocId);
-    queryClient.resetQueries({ queryKey: ["postList", currentUser.uid] });
-  };
+
   return (
     <div className="flex flex-1 flex-row">
       <button className="flex flex-row h-12">
@@ -22,9 +19,11 @@ const UserNames = (props) => {
         <div className="flex h-full items-center px-2 font-bold">
           <div className="flex flex-col text-left">
             <div className="hover:underline truncate">{props.Name}</div>
-            <div className="font-normal text-neutrals-600">
-              {props.ExtraInfo}
-            </div>
+            {props.isExtraInfoNeed ? (
+              <div className="font-normal text-neutrals-600">
+                @{props.ExtraInfo}
+              </div>
+            ) : null}
           </div>
         </div>
       </button>
@@ -47,7 +46,7 @@ const UserNames = (props) => {
                 </a>
               </li>
               <li>
-                <button onClick={handleDelete}>Delete</button>
+                <button>Delete</button>
               </li>
               <li>
                 <a>Hide</a>
@@ -64,7 +63,8 @@ export default UserNames;
 
 UserNames.defaultProps = {
   Name: "Your Name",
-  ExtraInfo: "@UserName",
+  ExtraInfo: "UserName",
   IndicatorNeed: false,
   MoreOptionNeed: false,
+  isExtraInfoNeed: true,
 };

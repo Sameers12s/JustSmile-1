@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
   IconHeart,
   IconHeartFilled,
-  IconShare,
+  IconTrash,
   IconMessage,
 } from "@tabler/icons-react";
 import moment from "moment";
@@ -12,8 +12,17 @@ import UserNames from "./UserNames";
 import createPostLike from "../api/createpostLike";
 import getPostlikes from "../api/getPostlikes";
 import getPostLikedByUser from "../api/getPostLikedByUser";
+import deletePost from "../api/deletePost";
 
-const Post = ({ body, time, username, name, total_comments, postDocId }) => {
+const Post = ({
+  body,
+  time,
+  username,
+  name,
+  total_comments,
+  postDocId,
+  uid,
+}) => {
   const { currentUser } = useAuth();
   const [isCommented, setIsCommented] = useState(false);
   const queryClient = useQueryClient();
@@ -39,15 +48,15 @@ const Post = ({ body, time, username, name, total_comments, postDocId }) => {
     setIsCommented(!isCommented);
   };
 
+  const handleDelete = () => {
+    deletePost(postDocId);
+    queryClient.resetQueries({ queryKey: ["postList", currentUser.uid] });
+  };
+
   return (
     <div className="flex flex-col w-full min-h-48 bg-neutrals-800 rounded-lg my-4">
       <div className="flex flex-row w-full h-18 items-center p-2">
-        <UserNames
-          Name={name}
-          ExtraInfo={username}
-          MoreOptionNeed={true}
-          postDocId={postDocId}
-        />
+        <UserNames Name={name} ExtraInfo={username} postDocId={postDocId} />
       </div>
       <div className="w-full flex-1 px-4 py-1 whitespace-pre-line">{body}</div>
       <div className="flex flex-row w-full p-4 text-neutrals-600">
@@ -70,9 +79,14 @@ const Post = ({ body, time, username, name, total_comments, postDocId }) => {
             <IconMessage />
             {total_comments}
           </button>
-          <button className="flex px-2 items-center hover:text-neutrals-400">
-            <IconShare />
-          </button>
+          {currentUser.uid == uid ? (
+            <button
+              className="flex px-2 items-center hover:text-neutrals-400"
+              onClick={handleDelete}
+            >
+              <IconTrash />
+            </button>
+          ) : null}
         </div>
         <div className="flex-1"></div>
         <div>{moment(parseInt(time)).fromNow()}</div>

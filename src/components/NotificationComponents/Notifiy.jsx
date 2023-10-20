@@ -2,7 +2,7 @@ import UserNames from "../UserNames";
 const Notifiy = () => {
   return (
     <div className="flex flex-row justify-center items-center bg-neutrals-800 h-20 w-full rounded-lg p-4">
-      <UserNames ExtraInfo={null} />
+      <UserNames ExtraInfo={null} isExtraInfoNeed={false} />
       <div className="flex w-full h-full text-start items-center ">
         <div className="font-normal">
           Liked your post:{" "}

@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, doc, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../services/firebase";
 
 export default async function getFollowingByUID(uid) {
@@ -7,5 +7,6 @@ export default async function getFollowingByUID(uid) {
   const querySnapshot = await getDocs(getUserPost);
   const following = [];
   querySnapshot.forEach((doc) => following.push(doc.data().following_uid));
+
   return following;
 }

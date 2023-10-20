@@ -2,22 +2,17 @@ import UserNames from "../UserNames";
 import { useAuth } from "../../context/auth-context";
 import getFollowerByUID from "../../api/getFollowersByUID";
 import { useQuery } from "react-query";
-import {
-  collection,
-  doc,
-  documentId,
-  getDoc,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
+import { and, collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../../services/firebase";
 
-async function getAllFollowers(followers) {
+async function getAllFollowers(followers, uid) {
   const followingRef = collection(firestore, "following");
   const getfollower = query(
     followingRef,
-    where("follower_uid", "in", followers)
+    and(
+      where("follower_uid", "in", followers),
+      where("following_uid", "==", uid)
+    )
   );
   const querySnapshot = await getDocs(getfollower);
   const allFollowers = [];
@@ -38,8 +33,8 @@ const Following = () => {
     isError: userIsError,
     error: userError,
   } = useQuery(
-    ["following-user-detail", currentUser.uid],
-    () => getAllFollowers(follower),
+    ["follower-user-detail", currentUser.uid],
+    () => getAllFollowers(follower, currentUser.uid),
     {
       enabled: !followerLoading,
     }
@@ -50,10 +45,10 @@ const Following = () => {
     <div className="flex h-full w-full flex-col">
       {userdeails?.map((p) => (
         <div
-          key={p.follower_uid}
+          key={p.following_uid}
           className="flex h-full w-full justify-center mb-3 items-center rounded-lg bg-neutrals-800 p-5"
         >
-          <UserNames Name={p.name} ExtraInfo={p.username} />
+          <UserNames Name={p.follower_name} ExtraInfo={p.follower_username} />
         </div>
       ))}
     </div>
