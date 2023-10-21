@@ -28,14 +28,18 @@ const SearchAccounts = () => {
   document.title = "JustSmile | Search - Accounts";
   return (
     <div className="flex h-full w-full flex-col">
-      {filteredList?.map((p) => (
-        <div
-          key={p.id}
-          className="flex h-full w-full justify-center mb-3 items-center rounded-lg bg-neutrals-800 p-5"
-        >
-          <UserNames Name={p.name} ExtraInfo={p.username} />
+      {searchTerm ? (
+        <div>
+          {filteredList?.map((p) => (
+            <div
+              key={p.id}
+              className="flex h-full w-full justify-center mb-3 items-center rounded-lg bg-neutrals-800 p-5"
+            >
+              <UserNames Name={p.name} ExtraInfo={p.username} />
+            </div>
+          ))}
         </div>
-      ))}
+      ) : null}
     </div>
   );
 };
