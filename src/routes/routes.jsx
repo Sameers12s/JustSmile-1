@@ -19,6 +19,8 @@ import SearchAccounts from "../components/SearchComponents/SearchAccounts";
 import SearchHashtags from "../components/SearchComponents/SearchHashtags";
 import Followers from "../components/FollowersFollowingComponents/Followers";
 import Following from "../components/FollowersFollowingComponents/Following";
+import YourPosts from "../components/AccountComponents/yourPosts";
+import LikedByYou from "../components/AccountComponents/likedByYou";
 
 export const ROUTES = {
   BaseLayout: "/",
@@ -49,6 +51,10 @@ const router = createBrowserRouter([
         path: "search",
         element: <Search />,
         children: [
+          {
+            path: "/search",
+            element: <Navigate replace to="/search/SearchAccounts" />,
+          },
           { path: "SearchAccounts", element: <SearchAccounts /> },
           { path: "SearchHashtags", element: <SearchHashtags /> },
         ],
@@ -70,6 +76,14 @@ const router = createBrowserRouter([
       {
         path: "account",
         element: <Account />,
+        children: [
+          {
+            path: "/account",
+            element: <Navigate replace to="/account/yourPosts" />,
+          },
+          { path: "yourPosts", element: <YourPosts /> },
+          { path: "LikedByYou", element: <LikedByYou /> },
+        ],
       },
       {
         path: "setting",

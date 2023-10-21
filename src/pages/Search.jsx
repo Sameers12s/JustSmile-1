@@ -3,8 +3,8 @@ import SearchBar from "../components/SearchBar";
 import { useState } from "react";
 
 const Search = () => {
-  const [searchTerm, setSearchTerm] = useState("");
   document.title = "JustSmile | Search";
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <div className="w-full">
       <SearchBar

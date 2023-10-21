@@ -30,7 +30,7 @@ const FollowersFollowingTab = (props) => {
             </button>
           </Link>
           <Link
-            to="followers-followings/Following"
+            to="followers-followings/Followers"
             className=" border-transparent"
           >
             <button className="stat px-2 place-items-center border-transparent">

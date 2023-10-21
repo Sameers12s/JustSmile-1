@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Accounts from "../components/AccountComponents/Accounts";
 import SearchbarItem from "../components/SearchbarItem";
-import Post from "../components/Post";
+import { Outlet } from "react-router-dom";
 
 const Account = () => {
-  const [activeTab, setActiveTab] = useState("ACCOUNTS");
+  const [activeTab, setActiveTab] = useState("YOUR POST");
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -20,6 +20,7 @@ const Account = () => {
           <SearchbarItem
             isActive={activeTab === "YOUR POST"}
             onClick={() => handleTabClick("YOUR POST")}
+            link={"yourPosts"}
           >
             <h1 className="px-4">YOUR POST</h1>
           </SearchbarItem>
@@ -27,6 +28,7 @@ const Account = () => {
           <SearchbarItem
             isActive={activeTab === "LIKED BY YOU"}
             onClick={() => handleTabClick("LIKED BY YOU")}
+            link={"LikedByYou"}
           >
             <h1 className="px-4">LIKED BY YOU</h1>
           </SearchbarItem>
@@ -52,7 +54,9 @@ const Account = () => {
           {/**  ----------------------------- */}
         </div>
       </div>
-      <div>{/* <Post /> */}</div>
+      <div>
+        <Outlet />
+      </div>
     </div>
   );
 };

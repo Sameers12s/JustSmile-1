@@ -22,19 +22,22 @@ const AddPostPopup = ({ close }) => {
   };
 
   return (
-    <div className="modal-box  flex w-[37rem] bg-neutrals-800 rounded-2xl flex-col justify-between ">
-      <div className="flex items-center px-4 pt-4">
+    <div className="modal-box p-4 pt-2 flex w-max-[37rem] bg-neutrals-800 rounded-2xl flex-col justify-between ">
+      <div className="flex items-center">
         <div className=" w-full flex justify-center text-center ">
           <div className="text-neutral-100 font-extrabold text-xl">
             NEW POST
           </div>
         </div>
-        <button className="btn btn-square cursor-pointer" onClick={close}>
+        <button
+          className="btn btn-square cursor-pointer bg-transparent border-transparent"
+          onClick={close}
+        >
           <IconX />
         </button>
       </div>
       <form onSubmit={handlePost}>
-        <div className="flex justify-center p-2 mt-4">
+        <div className="flex justify-center py-2">
           <textarea
             className="textarea bg-neutrals-900 rounded-lg p-3 w-[35rem] h-32"
             placeholder="Type Something"
@@ -44,7 +47,7 @@ const AddPostPopup = ({ close }) => {
           ></textarea>
         </div>
 
-        <div className=" flex justify-between items-center px-4 mb-4 mt-2">
+        <div className=" flex justify-between items-center">
           <button className="btn btn-neutrals-600 ">
             <IconPaperclip />
           </button>

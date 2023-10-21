@@ -35,6 +35,7 @@ const Following = () => {
     ["following", currentUser.uid],
     () => getFollowingByUID(currentUser.uid)
   );
+
   const { data: userdeails } = useQuery(
     ["following-user-detail", currentUser.uid],
     () => getAllFollowing(following, currentUser.uid),

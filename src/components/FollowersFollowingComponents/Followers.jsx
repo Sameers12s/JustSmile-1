@@ -4,6 +4,8 @@ import getFollowerByUID from "../../api/getFollowersByUID";
 import { useQuery } from "react-query";
 import { and, collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../../services/firebase";
+import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 
 async function getAllFollowers(followers, uid) {
   const followingRef = collection(firestore, "following");
@@ -20,19 +22,21 @@ async function getAllFollowers(followers, uid) {
   return allFollowers;
 }
 
+function searchText(text, target) {
+  return text.toLowerCase().includes(target.toLowerCase());
+}
+
 const Following = () => {
   const { currentUser } = useAuth();
+  const [filteredList, setFilteredList] = useState([]);
+  const { searchTerm } = useOutletContext();
+
   const { data: follower, isLoading: followerLoading } = useQuery(
     ["follower", currentUser.uid],
     () => getFollowerByUID(currentUser.uid)
   );
 
-  const {
-    data: userdeails,
-    isLoading: userLoading,
-    isError: userIsError,
-    error: userError,
-  } = useQuery(
+  const { data: userdeails } = useQuery(
     ["follower-user-detail", currentUser.uid],
     () => getAllFollowers(follower, currentUser.uid),
     {
@@ -40,10 +44,20 @@ const Following = () => {
     }
   );
 
+  useEffect(() => {
+    if (!userdeails) return;
+    const filteredUsers = userdeails.filter(
+      (u) =>
+        searchText(u.follower_name, searchTerm) ||
+        searchText(u.follower_username, searchTerm)
+    );
+    setFilteredList(filteredUsers);
+  }, [searchTerm, userdeails]);
+
   document.title = "JustSmile | followers-followings- Following";
   return (
     <div className="flex h-full w-full flex-col">
-      {userdeails?.map((p) => (
+      {filteredList?.map((p) => (
         <div
           key={p.following_uid}
           className="flex h-full w-full justify-center mb-3 items-center rounded-lg bg-neutrals-800 p-5"
