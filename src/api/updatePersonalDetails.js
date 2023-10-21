@@ -14,7 +14,11 @@ async function updatePersonalDetails(uid, name, username, bio = "") {
     where("username", "==", username)
   );
   const querySnapshot = await getDocs(searchUsername);
-  if (!querySnapshot.empty) {
+  const usernames = [];
+  querySnapshot.forEach((doc) => usernames.push({ ...doc.data() }));
+
+  if (usernames[0].username == username && usernames[0].uid == uid) {
+  } else {
     return {
       success: false,
       error: alert("Username is already taken"),
