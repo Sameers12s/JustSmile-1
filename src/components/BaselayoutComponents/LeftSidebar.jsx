@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import AddPostPopup from "../Popups/AddPostPopup";
 import SidebarButtons from "../SidebarButtons";
 import {
@@ -10,8 +10,10 @@ import {
   IconTable,
   IconUser,
 } from "@tabler/icons-react";
+import { useAuth } from "../../context/auth-context";
 
 const LeftSidebar = () => {
+  const { currentUser } = useAuth();
   const modal = useRef();
   const [activeTab, setActiveTab] = useState("home");
 
@@ -72,7 +74,7 @@ const LeftSidebar = () => {
       <SidebarButtons
         isActive={activeTab === "account"}
         onClick={() => handleTabClick("account")}
-        link={"account"}
+        link={`account/${currentUser.uid}`}
       >
         <IconUser />
         ACCOUNT

@@ -1,25 +1,26 @@
 import { useQuery } from "react-query";
 import getCurrentUserDetails from "../../api/getCurrentUserDetails";
-import { useAuth } from "../../context/auth-context";
 import UserNames from "../UserNames";
 import FollowButton from "./FollowButton";
+import propTypes from "prop-types";
 
 import {
-  IconEdit,
   IconBrandGithub,
   IconBrandLinkedin,
   IconBrandTwitterFilled,
 } from "@tabler/icons-react";
-const Accounts = () => {
-  const { currentUser } = useAuth();
-
+const Accounts = (props) => {
   const { data: userData, isLoading: userDataLoading } = useQuery(
-    ["userData", currentUser.uid],
-    () => getCurrentUserDetails(currentUser.uid)
+    ["userData", props.uid],
+    () => getCurrentUserDetails(props.uid)
   );
 
-  if (userData?.linkedinp) {
-    const hide = true;
+  if (userDataLoading) {
+    return (
+      <div className="flex justify-center items-center h-full">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
   }
 
   return (
@@ -67,4 +68,9 @@ const Accounts = () => {
     </div>
   );
 };
+
+Accounts.propTypes = {
+  uid: propTypes.string,
+};
+
 export default Accounts;

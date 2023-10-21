@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   IconHeart,
   IconHeartFilled,
@@ -56,7 +56,12 @@ const Post = ({
   return (
     <div className="flex flex-col w-full min-h-48 bg-neutrals-800 rounded-lg my-4">
       <div className="flex flex-row w-full h-18 items-center p-2">
-        <UserNames Name={name} ExtraInfo={username} postDocId={postDocId} />
+        <UserNames
+          Name={name}
+          ExtraInfo={username}
+          postDocId={postDocId}
+          uid={uid}
+        />
       </div>
       <div className="w-full flex-1 px-4 py-1 whitespace-pre-line">{body}</div>
       <div className="flex flex-row w-full p-4 text-neutrals-600">

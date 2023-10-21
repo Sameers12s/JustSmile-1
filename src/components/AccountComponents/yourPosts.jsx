@@ -1,16 +1,14 @@
 import { useQuery } from "react-query";
 import Post from "../Post";
-import { useAuth } from "../../context/auth-context";
 import getAllPostByUID from "../../api/getAllPostByUID";
+import { useOutletContext } from "react-router-dom";
+
 const YourPosts = () => {
   document.title = "JustSmile | Your Posts";
-
-  const { currentUser } = useAuth();
+  const { uid } = useOutletContext();
 
   const { data: currentUserPosts, isLoading: currentUserPostsLoading } =
-    useQuery(["currentUserPosts", currentUser.uid], () =>
-      getAllPostByUID(currentUser.uid)
-    );
+    useQuery(["currentUserPosts", uid], () => getAllPostByUID(uid));
 
   if (currentUserPostsLoading) {
     return (

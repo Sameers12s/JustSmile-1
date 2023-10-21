@@ -1,8 +1,4 @@
-import {
-  createBrowserRouter,
-  Navigate,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import BaseLayout from "../pages/layouts/BaseLayout";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -74,13 +70,9 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "account",
+        path: "account/:uid",
         element: <Account />,
         children: [
-          {
-            path: "/account",
-            element: <Navigate replace to="/account/yourPosts" />,
-          },
           { path: "yourPosts", element: <YourPosts /> },
           { path: "LikedByYou", element: <LikedByYou /> },
         ],

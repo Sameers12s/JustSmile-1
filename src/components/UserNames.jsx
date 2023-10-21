@@ -1,16 +1,17 @@
-import { useQueryClient } from "react-query";
-
 import UserImg from "../assets/images/userimg.jpg";
 import { IconDotsVertical } from "@tabler/icons-react";
-import { useAuth } from "../context/auth-context";
+import propTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 const UserNames = (props) => {
-  const queryClient = useQueryClient();
-  const { currentUser } = useAuth();
-
+  const links = props.uid;
+  const navigate = useNavigate();
   return (
     <div className="flex flex-1 flex-row">
-      <button className="flex flex-row h-12">
+      <button
+        className="flex flex-row h-12"
+        onClick={() => navigate(`/account/${links}`)}
+      >
         <div className="avatar">
           <div className="w-12 rounded-full hover:bg-slate-200">
             <img src={UserImg} alt="userimg" />
@@ -67,4 +68,12 @@ UserNames.defaultProps = {
   IndicatorNeed: false,
   MoreOptionNeed: false,
   isExtraInfoNeed: true,
+};
+UserNames.propTypes = {
+  uid: propTypes.string,
+  Name: propTypes.string,
+  ExtraInfo: propTypes.string,
+  IndicatorNeed: propTypes.bool,
+  MoreOptionNeed: propTypes.bool,
+  isExtraInfoNeed: propTypes.bool,
 };

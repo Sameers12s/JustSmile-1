@@ -23,9 +23,10 @@ const SearchAccounts = () => {
         searchText(u.name, searchTerm) || searchText(u.username, searchTerm)
     );
     setFilteredList(filteredUsers);
-  }, [searchTerm]);
+  }, [userdeails, searchTerm]);
 
   document.title = "JustSmile | Search - Accounts";
+
   return (
     <div className="flex h-full w-full flex-col">
       {searchTerm ? (
@@ -35,7 +36,7 @@ const SearchAccounts = () => {
               key={p.id}
               className="flex h-full w-full justify-center mb-3 items-center rounded-lg bg-neutrals-800 p-5"
             >
-              <UserNames Name={p.name} ExtraInfo={p.username} />
+              <UserNames Name={p.name} ExtraInfo={p.username} uid={p.id} />
             </div>
           ))}
         </div>

@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Accounts from "../components/AccountComponents/Accounts";
 import SearchbarItem from "../components/SearchbarItem";
-import { Outlet } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 
 const Account = () => {
-  const [activeTab, setActiveTab] = useState("YOUR POST");
+  const [activeTab, setActiveTab] = useState("");
+  const params = useParams();
+  const { uid } = params;
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -13,7 +15,7 @@ const Account = () => {
   return (
     <div>
       <div>
-        <Accounts />
+        <Accounts uid={uid} />
       </div>
       <div className="flex flex-row justify-around w-full py-2 px-2">
         <div className="flex w-full justify-start">
@@ -55,7 +57,7 @@ const Account = () => {
         </div>
       </div>
       <div>
-        <Outlet />
+        <Outlet context={{ uid }} />
       </div>
     </div>
   );

@@ -62,7 +62,11 @@ const Following = () => {
           key={p.following_uid}
           className="flex h-full w-full justify-center mb-3 items-center rounded-lg bg-neutrals-800 p-5"
         >
-          <UserNames Name={p.follower_name} ExtraInfo={p.follower_username} />
+          <UserNames
+            Name={p.follower_name}
+            ExtraInfo={p.follower_username}
+            uid={p.follower_uid}
+          />
         </div>
       ))}
     </div>

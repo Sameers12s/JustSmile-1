@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../services/firebase";
 
 export default async function getFollowingByUID(uid) {
