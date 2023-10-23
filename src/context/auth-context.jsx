@@ -3,6 +3,7 @@ import { auth, firestore } from "../services/firebase";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
   updatePassword as updatePasswordFB,

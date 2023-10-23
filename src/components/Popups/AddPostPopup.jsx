@@ -48,7 +48,7 @@ const AddPostPopup = ({ close }) => {
         </div>
 
         <div className=" flex justify-between items-center">
-          <button className="btn btn-neutrals-600 ">
+          <button className="btn btn-neutrals-600 " type="button">
             <IconPaperclip />
           </button>
 

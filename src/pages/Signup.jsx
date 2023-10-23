@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import AuthLayout from "./layouts/AuthLayout";
-import { IconUser, IconLock, IconEye, IconAt } from "@tabler/icons-react";
+import { IconUser, IconLock, IconAt } from "@tabler/icons-react";
 import { useAuth } from "../context/auth-context";
 
 const SignUpPage = () => {
@@ -110,7 +110,10 @@ const SignUpPage = () => {
         <div className="flex w-full justify-end items-center pt-9">
           <div className="flex justify-end">
             <Link to="/login">
-              <button className="btn bg-neutrals-700 w-28 text-white mx-1 hover:bg-neutrals-700">
+              <button
+                className="btn bg-neutrals-700 w-28 text-white mx-1 hover:bg-neutrals-700"
+                type="button"
+              >
                 LOGIN
               </button>
             </Link>

@@ -2,8 +2,10 @@ import { useState } from "react";
 import Accounts from "../components/AccountComponents/Accounts";
 import SearchbarItem from "../components/SearchbarItem";
 import { Outlet, useParams } from "react-router-dom";
+import { useAuth } from "../context/auth-context";
 
 const Account = () => {
+  const { currentUser } = useAuth();
   const [activeTab, setActiveTab] = useState("");
   const params = useParams();
   const { uid } = params;
@@ -24,7 +26,11 @@ const Account = () => {
             onClick={() => handleTabClick("YOUR POST")}
             link={"yourPosts"}
           >
-            <h1 className="px-4">YOUR POST</h1>
+            {currentUser.uid == uid ? (
+              <h1 className="px-4">YOUR POST</h1>
+            ) : (
+              <h1 className="px-4">POST</h1>
+            )}
           </SearchbarItem>
 
           <SearchbarItem

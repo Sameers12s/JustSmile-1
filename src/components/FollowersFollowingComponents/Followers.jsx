@@ -59,7 +59,7 @@ const Following = () => {
     <div className="flex h-full w-full flex-col">
       {filteredList?.map((p) => (
         <div
-          key={p.following_uid}
+          key={p.follower_uid}
           className="flex h-full w-full justify-center mb-3 items-center rounded-lg bg-neutrals-800 p-5"
         >
           <UserNames

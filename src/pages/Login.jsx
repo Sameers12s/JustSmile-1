@@ -57,9 +57,6 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <div className="join-item pr-2">
-            <IconEye />
-          </div>
         </div>
 
         <div className="flex w-full justify-between items-center pt-9">
@@ -69,7 +66,10 @@ const Login = () => {
 
           <div className="flex justify-end">
             <Link to="/signup">
-              <button className="btn bg-neutrals-700 w-28 text-white mx-1 hover:bg-neutrals-700">
+              <button
+                className="btn bg-neutrals-700 w-28 text-white mx-1 hover:bg-neutrals-700"
+                type="button"
+              >
                 SIGN UP
               </button>
             </Link>

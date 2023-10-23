@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
 
 const Navbar = () => {
-  const { logout } = useAuth();
+  const { currentUser, logout } = useAuth();
   return (
     <nav className="navbar bg-secondary text-white">
       <div className="navbar-start">
@@ -52,13 +52,13 @@ const Navbar = () => {
           className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
         >
           <li>
-            <a className="justify-between" href="account">
+            <a className="justify-between" href={`account/${currentUser.uid}`}>
               Profile
               <span className="badge">New</span>
             </a>
           </li>
           <li>
-            <a href="setting">Settings</a>
+            <a href="/setting">Settings</a>
           </li>
           <li>
             <a onClick={logout} href={"/login"}>

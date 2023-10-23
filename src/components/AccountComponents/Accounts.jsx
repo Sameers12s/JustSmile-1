@@ -3,13 +3,16 @@ import getCurrentUserDetails from "../../api/getCurrentUserDetails";
 import UserNames from "../UserNames";
 import FollowButton from "./FollowButton";
 import propTypes from "prop-types";
-
 import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconBrandTwitterFilled,
 } from "@tabler/icons-react";
+import { useAuth } from "../../context/auth-context";
+
 const Accounts = (props) => {
+  const { currentUser } = useAuth();
+
   const { data: userData, isLoading: userDataLoading } = useQuery(
     ["userData", props.uid],
     () => getCurrentUserDetails(props.uid)
@@ -61,9 +64,13 @@ const Accounts = (props) => {
           ) : null}
         </div>
         <div className="flex-1"></div>
-        <div>
-          <FollowButton>Follow</FollowButton>
-        </div>
+        {currentUser.uid != props.uid ? (
+          <div>
+            <FollowButton uid={props.uid} fuid={props.uid}>
+              Follow
+            </FollowButton>
+          </div>
+        ) : null}
       </div>
     </div>
   );

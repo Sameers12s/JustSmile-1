@@ -34,7 +34,7 @@ const PersonalDetails = (props) => {
               >
                 UPLOAD
               </button>
-              <button className="btn bg-red-500">REMOVE</button>
+              <button className="btn bg-brand-red">REMOVE</button>
             </div>
           </div>
         </div>

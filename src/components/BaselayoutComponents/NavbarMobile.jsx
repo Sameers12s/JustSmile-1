@@ -6,9 +6,7 @@ import {
   IconMessageCircle2,
   IconPlus,
   IconSearch,
-  IconSettings,
   IconTable,
-  IconUser,
 } from "@tabler/icons-react";
 
 const NavbarMobile = () => {
