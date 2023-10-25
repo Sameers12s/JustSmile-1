@@ -1,20 +1,15 @@
-import UserImg from "../assets/images/userimg.jpg";
+// import UserImg from "../assets/images/userimg.jpg";
 import { IconDotsVertical } from "@tabler/icons-react";
 import propTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import Avatar from "./Avatar";
 
 const UserNames = (props) => {
-  const links = props.uid;
-  const navigate = useNavigate();
   return (
     <div className="flex flex-1 flex-row">
-      <button
-        className="flex flex-row h-12"
-        onClick={() => navigate(`/account/${links}`)}
-      >
+      <button className="flex flex-row h-12" onClick={props.link}>
         <div className="avatar">
           <div className="w-12 rounded-full hover:bg-slate-200">
-            <img src={UserImg} alt="userimg" />
+            <Avatar uid={props.uid} size="50%" />
           </div>
         </div>
         <div className="flex h-full items-center px-2 font-bold">
@@ -22,7 +17,7 @@ const UserNames = (props) => {
             <div className="hover:underline truncate">{props.Name}</div>
             {props.isExtraInfoNeed ? (
               <div className="font-normal text-neutrals-600">
-                @{props.ExtraInfo}
+                {props.ExtraInfo}
               </div>
             ) : null}
           </div>
@@ -63,8 +58,8 @@ const UserNames = (props) => {
 export default UserNames;
 
 UserNames.defaultProps = {
-  Name: "Your Name",
-  ExtraInfo: "UserName",
+  Name: "",
+  ExtraInfo: "",
   IndicatorNeed: false,
   MoreOptionNeed: false,
   isExtraInfoNeed: true,

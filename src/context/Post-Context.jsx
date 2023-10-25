@@ -1,5 +1,5 @@
 import { collection, getDoc, doc, addDoc } from "firebase/firestore";
-import { useContext, useState, createContext } from "react";
+import { useContext, createContext } from "react";
 import { firestore } from "../services/firebase";
 import { useAuth } from "./auth-context";
 
@@ -21,7 +21,7 @@ export function PostProvider({ children }) {
     await addDoc(postRef, {
       content,
       uid: currentUser.uid,
-      author_fullname: currentUser.displayName,
+      author_fullname: docSnap.data().name,
       author_username: docSnap.data().username,
       created_at: Date.now(),
       total_comments: 0,

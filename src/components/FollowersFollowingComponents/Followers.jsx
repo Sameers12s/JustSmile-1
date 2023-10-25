@@ -5,7 +5,7 @@ import { useQuery } from "react-query";
 import { and, collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../../services/firebase";
 import { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 async function getAllFollowers(followers, uid) {
   const followingRef = collection(firestore, "following");
@@ -27,6 +27,7 @@ function searchText(text, target) {
 }
 
 const Following = () => {
+  const navigate = useNavigate();
   const { currentUser } = useAuth();
   const [filteredList, setFilteredList] = useState([]);
   const { searchTerm } = useOutletContext();
@@ -64,7 +65,8 @@ const Following = () => {
         >
           <UserNames
             Name={p.follower_name}
-            ExtraInfo={p.follower_username}
+            ExtraInfo={"@" + p.follower_username}
+            link={() => navigate(`/account/${p.follower_uid}`)}
             uid={p.follower_uid}
           />
         </div>

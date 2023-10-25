@@ -15,9 +15,10 @@ const AddPostPopup = ({ close }) => {
     try {
       await createPost(content);
       queryClient.resetQueries({ queryKey: ["postList", currentUser.uid] });
+      setContent("");
       close();
     } catch (error) {
-      console.error("Error during signup", error);
+      console.error("Error", error);
     }
   };
 

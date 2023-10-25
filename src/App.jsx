@@ -3,16 +3,18 @@ import router from "./routes/routes";
 import { AuthProvider } from "./context/auth-context";
 import { PostProvider } from "./context/Post-Context";
 import { QueryClient, QueryClientProvider } from "react-query";
-
+import { ChatContextProvider } from "./context/ChatContext";
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <PostProvider>
-          <RouterProvider router={router} />
-        </PostProvider>
+        <ChatContextProvider>
+          <PostProvider>
+            <RouterProvider router={router} />
+          </PostProvider>
+        </ChatContextProvider>
       </AuthProvider>
     </QueryClientProvider>
   );

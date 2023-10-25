@@ -74,7 +74,7 @@ const LeftSidebar = () => {
       <SidebarButtons
         isActive={activeTab === "account"}
         onClick={() => handleTabClick("account")}
-        link={`account/${currentUser.uid}`}
+        link={`account/${currentUser?.uid}`}
       >
         <IconUser />
         ACCOUNT

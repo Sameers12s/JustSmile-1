@@ -67,6 +67,8 @@ export function AuthProvider({ children }) {
       twitterp: "",
     });
 
+    await setDoc(doc(firestore, "userChats", newUser.uid), {});
+
     return {
       success: true,
       user: newUser,

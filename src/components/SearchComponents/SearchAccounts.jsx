@@ -1,7 +1,7 @@
 import UserNames from "../UserNames";
 import { useQuery } from "react-query";
 import { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import getAllUser from "../../api/getAllUser";
 
 function searchText(text, target) {
@@ -9,6 +9,7 @@ function searchText(text, target) {
 }
 
 const SearchAccounts = () => {
+  const navigate = useNavigate();
   const [filteredList, setFilteredList] = useState([]);
   const { searchTerm } = useOutletContext();
 
@@ -36,7 +37,12 @@ const SearchAccounts = () => {
               key={p.id}
               className="flex h-full w-full justify-center mb-3 items-center rounded-lg bg-neutrals-800 p-5"
             >
-              <UserNames Name={p.name} ExtraInfo={p.username} uid={p.id} />
+              <UserNames
+                Name={p.name}
+                ExtraInfo={"@" + p.username}
+                link={() => navigate(`/account/${p.id}`)}
+                uid={p.id}
+              />
             </div>
           ))}
         </div>

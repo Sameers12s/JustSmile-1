@@ -2,31 +2,16 @@ import UserNames from "../UserNames";
 import { useAuth } from "../../context/auth-context";
 import getFollowingByUID from "../../api/getFollowingByUID";
 import { useQuery } from "react-query";
-import { and, collection, getDocs, query, where } from "firebase/firestore";
-import { firestore } from "../../services/firebase";
 import { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
-
-async function getAllFollowing(followers, uid) {
-  const followingRef = collection(firestore, "following");
-  const getfollower = query(
-    followingRef,
-    and(
-      where("following_uid", "in", followers),
-      where("follower_uid", "==", uid)
-    )
-  );
-  const querySnapshot = await getDocs(getfollower);
-  const allFollowing = [];
-  querySnapshot.forEach((doc) => allFollowing.push({ ...doc.data() }));
-  return allFollowing;
-}
+import { useNavigate, useOutletContext } from "react-router-dom";
+import { getAllFollowing } from "../../api/getAllFollowing";
 
 function searchText(text, target) {
   return text.toLowerCase().includes(target.toLowerCase());
 }
 
 const Following = () => {
+  const navigate = useNavigate();
   const { currentUser } = useAuth();
   const [filteredList, setFilteredList] = useState([]);
   const { searchTerm } = useOutletContext();
@@ -63,7 +48,8 @@ const Following = () => {
         >
           <UserNames
             Name={p.name}
-            ExtraInfo={p.username}
+            ExtraInfo={"@" + p.username}
+            link={() => navigate(`/account/${p.following_uid}`)}
             uid={p.following_uid}
           />
         </div>

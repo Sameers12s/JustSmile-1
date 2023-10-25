@@ -2,6 +2,7 @@ import { useState } from "react";
 import UserImg from "../../assets/images/userimg.jpg";
 import { useAuth } from "../../context/auth-context";
 import updatePersonalDetails from "../../api/updatePersonalDetails";
+import Avatar from "../Avatar";
 
 const PersonalDetails = (props) => {
   const [name, setName] = useState(props.name);
@@ -23,7 +24,7 @@ const PersonalDetails = (props) => {
             <div className="flex basis-3/4  max-w-[7rem] rounded-full bg-neutrals-600 text-center">
               <div className="avatar">
                 <div className="max-w-[7rem] rounded-full">
-                  <img src={UserImg} />
+                  <Avatar uid={currentUser.uid} size="50%" />
                 </div>
               </div>
             </div>

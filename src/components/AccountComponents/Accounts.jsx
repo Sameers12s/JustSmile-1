@@ -30,7 +30,11 @@ const Accounts = (props) => {
     <div className="flex flex-col w-full min-h-48 bg-neutrals-800 rounded-lg">
       <div className="flex flex-row justify-around w-full h-18 items-center p-2">
         <div className="flex  h-full w-full">
-          <UserNames Name={userData?.name} ExtraInfo={userData?.username} />
+          <UserNames
+            Name={userData?.name}
+            ExtraInfo={"@" + userData?.username}
+            uid={props.uid}
+          />
         </div>
       </div>
       <div className="flex py-2 px-4 font-bold text-neutrals-600">Bio</div>

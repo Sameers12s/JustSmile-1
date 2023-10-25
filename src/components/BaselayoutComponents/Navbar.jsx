@@ -1,11 +1,13 @@
-import Avatar from "../../assets/images/user-default-96x96.png";
 import Logo from "../../assets/images/logo.svg";
 import { IconSearch, IconBell } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
+import Avatar from "../Avatar";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
   return (
     <nav className="navbar bg-secondary text-white">
       <div className="navbar-start">
@@ -44,7 +46,7 @@ const Navbar = () => {
       <div className="dropdown dropdown-end">
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
-            <img src={Avatar} />
+            <Avatar uid={currentUser?.uid} size="50%" />
           </div>
         </label>
         <ul
@@ -52,10 +54,13 @@ const Navbar = () => {
           className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
         >
           <li>
-            <a className="justify-between" href={`account/${currentUser.uid}`}>
+            <button
+              className="justify-between"
+              onClick={() => navigate(`/account/${currentUser.uid}`)}
+            >
               Profile
               <span className="badge">New</span>
-            </a>
+            </button>
           </li>
           <li>
             <a href="/setting">Settings</a>

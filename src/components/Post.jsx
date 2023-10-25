@@ -13,6 +13,7 @@ import createPostLike from "../api/createpostLike";
 import getPostlikes from "../api/getPostlikes";
 import getPostLikedByUser from "../api/getPostLikedByUser";
 import deletePost from "../api/deletePost";
+import { useNavigate } from "react-router-dom";
 
 const Post = ({
   body,
@@ -23,6 +24,7 @@ const Post = ({
   postDocId,
   uid,
 }) => {
+  const navigate = useNavigate();
   const { currentUser } = useAuth();
   const [isCommented, setIsCommented] = useState(false);
   const queryClient = useQueryClient();
@@ -58,8 +60,9 @@ const Post = ({
       <div className="flex flex-row w-full h-18 items-center p-2">
         <UserNames
           Name={name}
-          ExtraInfo={username}
+          ExtraInfo={"@" + username}
           postDocId={postDocId}
+          link={() => navigate(`/account/${uid}`)}
           uid={uid}
         />
       </div>
@@ -96,6 +99,7 @@ const Post = ({
         <div className="flex-1"></div>
         <div>{moment(parseInt(time)).fromNow()}</div>
       </div>
+      {isCommented ? <div>sdjkfygh</div> : null}
     </div>
   );
 };

@@ -13,11 +13,11 @@ const FollowButton = (props) => {
     () => isUserFollowing(currentUser.uid, props.uid)
   );
 
-  const handleButtonClick = () => {
-    follower(currentUser.uid, props.uid);
+  const handleButtonClick = async () => {
+    await follower(currentUser.uid, props.uid);
     queryClient.resetQueries(
       {
-        queryKey: ["UserFollowing", currentUser?.uid, props.uid],
+        queryKey: ["UserFollowing", currentUser.uid, props.uid],
       },
       { queryKey: ["FollowingCount", currentUser?.uid] }
     );
