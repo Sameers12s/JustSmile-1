@@ -4,6 +4,7 @@ import {
   IconHeartFilled,
   IconTrash,
   IconMessage,
+  IconDotsVertical,
 } from "@tabler/icons-react";
 import moment from "moment";
 import { useAuth } from "../context/auth-context";
@@ -14,30 +15,35 @@ import getPostlikes from "../api/getPostlikes";
 import getPostLikedByUser from "../api/getPostLikedByUser";
 import deletePost from "../api/deletePost";
 import { useNavigate } from "react-router-dom";
+import createComment from "../api/createComment";
+import getComments from "../api/getComments";
+import Comments from "./Comment";
+import getCommentsCount from "../api/getCommentsCount";
 
-const Post = ({
-  body,
-  time,
-  username,
-  name,
-  total_comments,
-  postDocId,
-  uid,
-}) => {
+const Post = ({ body, time, username, name, postDocId, uid }) => {
   const navigate = useNavigate();
   const { currentUser } = useAuth();
   const [isCommented, setIsCommented] = useState(false);
+  const [comment, setComment] = useState("");
   const queryClient = useQueryClient();
 
   const { data: likes, isLoading: isLikesLoading } = useQuery(
     ["Likes", postDocId],
     () => getPostlikes(postDocId)
   );
+  const { data: totalComments, isLoading: istotalCommentsLoading } = useQuery(
+    ["totalComments", postDocId],
+    () => getCommentsCount(postDocId)
+  );
   const { data: likedByUser } = useQuery(
     ["LikedByUser", postDocId, currentUser.uid],
     () => getPostLikedByUser(postDocId, currentUser.uid)
   );
 
+  const { data: commentsList, isLoading: commentsLoading } = useQuery(
+    ["commentsList", postDocId],
+    () => getComments(postDocId)
+  );
   const handleLikeClick = async () => {
     await createPostLike(currentUser.uid, postDocId);
     queryClient.resetQueries({ queryKey: ["Likes", postDocId] });
@@ -50,8 +56,23 @@ const Post = ({
     setIsCommented(!isCommented);
   };
 
-  const handleDelete = () => {
-    deletePost(postDocId);
+  const handleComment = async (event) => {
+    event.preventDefault();
+    await createComment(
+      currentUser.uid,
+      postDocId,
+      comment,
+      currentUser.displayName
+    );
+    setComment("");
+    queryClient.resetQueries({ queryKey: ["totalComments", postDocId] });
+    queryClient.resetQueries({
+      queryKey: ["commentsList", postDocId],
+    });
+  };
+
+  const handleDeletePost = async () => {
+    await deletePost(postDocId);
     queryClient.resetQueries({ queryKey: ["postList", currentUser.uid] });
   };
 
@@ -85,12 +106,12 @@ const Post = ({
             onClick={handleCommentClick}
           >
             <IconMessage />
-            {total_comments}
+            {totalComments}
           </button>
           {currentUser.uid == uid ? (
             <button
               className="flex px-2 items-center hover:text-neutrals-400"
-              onClick={handleDelete}
+              onClick={handleDeletePost}
             >
               <IconTrash />
             </button>
@@ -99,7 +120,39 @@ const Post = ({
         <div className="flex-1"></div>
         <div>{moment(parseInt(time)).fromNow()}</div>
       </div>
-      {isCommented ? <div>sdjkfygh</div> : null}
+      {isCommented ? (
+        <div className=" border-t-2 border-t-neutrals-700">
+          {commentsList?.map((c) => (
+            <Comments
+              key={c.id}
+              uid={c.uid}
+              name={c.name}
+              content={c.content}
+              postDocId={postDocId}
+              id={c.id}
+              time={c.created_at}
+            />
+          ))}
+
+          <form className="flex p-3 pl-10" onSubmit={handleComment}>
+            <textarea
+              type="text"
+              placeholder="Type here"
+              className=" w-full h-10 bg-transparent border-b-4 border-b-neutrals-700 focus:outline-none"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              required
+            />
+            <button
+              className="btn btn-sm h-10 btn-primary join-item"
+              type="submit"
+              value="submit"
+            >
+              Post
+            </button>
+          </form>
+        </div>
+      ) : null}
     </div>
   );
 };

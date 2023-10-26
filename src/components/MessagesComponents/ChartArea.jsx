@@ -13,6 +13,7 @@ import { ChatContext } from "../../context/ChatContext";
 import { firestore } from "../../services/firebase";
 import { useAuth } from "../../context/auth-context";
 import { v4 as uuid } from "uuid";
+import moment from "moment";
 const ChartArea = () => {
   const [messages, setMessages] = useState([]);
   const { data } = useContext(ChatContext);
@@ -38,7 +39,7 @@ const ChartArea = () => {
         id: uuid(),
         text,
         senderId: currentUser.uid,
-        date: Timestamp.now(),
+        date: Date.now(),
       }),
     });
 
@@ -94,7 +95,9 @@ const ChartArea = () => {
               >
                 {m.text}
               </div>
-              <div className="chat-footer opacity-50">Seen at 12:46</div>
+              <div className="chat-footer opacity-50">
+                {moment(m.date).fromNow()}
+              </div>
             </div>
           ))}
         </div>

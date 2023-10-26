@@ -2,7 +2,7 @@ import Navbar from "../../components/BaselayoutComponents/Navbar";
 import LeftSidebar from "../../components/BaselayoutComponents/LeftSidebar";
 import RightSidebar from "../../components/BaselayoutComponents/RightSidebar";
 import NavbarMobile from "../../components/BaselayoutComponents/NavbarMobile";
-import { Outlet, useFetcher, useMatch, useMatches } from "react-router-dom";
+import { Outlet, useMatches } from "react-router-dom";
 
 const BaseLayout = () => {
   document.title = "JustSmile | Home";

@@ -8,8 +8,8 @@ const UserNames = (props) => {
     <div className="flex flex-1 flex-row">
       <button className="flex flex-row h-12" onClick={props.link}>
         <div className="avatar">
-          <div className="w-12 rounded-full hover:bg-slate-200">
-            <Avatar uid={props.uid} size="50%" />
+          <div className={`w-12 rounded-full hover:bg-slate-200`}>
+            <Avatar uid={props.uid} />
           </div>
         </div>
         <div className="flex h-full items-center px-2 font-bold">
@@ -63,6 +63,7 @@ UserNames.defaultProps = {
   IndicatorNeed: false,
   MoreOptionNeed: false,
   isExtraInfoNeed: true,
+  size: "w-12",
 };
 UserNames.propTypes = {
   uid: propTypes.string,

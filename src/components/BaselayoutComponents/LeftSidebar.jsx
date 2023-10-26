@@ -2,13 +2,13 @@ import { useRef, useState } from "react";
 import AddPostPopup from "../Popups/AddPostPopup";
 import SidebarButtons from "../SidebarButtons";
 import {
-  IconBell,
   IconMessageCircle2,
   IconPlus,
   IconSearch,
   IconSettings,
   IconTable,
   IconUser,
+  IconUsers,
 } from "@tabler/icons-react";
 import { useAuth } from "../../context/auth-context";
 
@@ -45,12 +45,12 @@ const LeftSidebar = () => {
       </SidebarButtons>
 
       <SidebarButtons
-        isActive={activeTab === "notifications"}
-        onClick={() => handleTabClick("notifications")}
-        link={"notifications"}
+        isActive={activeTab === "FollowersFollowing"}
+        onClick={() => handleTabClick("FollowersFollowing")}
+        link={"followers-followings/Followers"}
       >
-        <IconBell />
-        NOTIFICATIONS
+        <IconUsers />
+        Followers Following
       </SidebarButtons>
 
       <SidebarButtons
