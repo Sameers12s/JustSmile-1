@@ -12,7 +12,7 @@ const SidebarButtons = ({
 
   const handleClick = () => {
     navigate(link);
-    onClick(link); // Notify parent about the button click
+    // Notify parent about the button click
   };
 
   return (

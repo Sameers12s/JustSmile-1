@@ -2,11 +2,11 @@ import { useRef } from "react";
 import AddPostPopup from "../Popups/AddPostPopup";
 import SidebarButtons from "../SidebarButtons";
 import {
-  IconBell,
   IconMessageCircle2,
   IconPlus,
   IconSearch,
   IconTable,
+  IconUsers,
 } from "@tabler/icons-react";
 
 const NavbarMobile = () => {
@@ -23,8 +23,8 @@ const NavbarMobile = () => {
       </SidebarButtons>
       <div className="flex-1"></div>
 
-      <SidebarButtons link={"notifications"}>
-        <IconBell />
+      <SidebarButtons link={"followers-followings/Followers"}>
+        <IconUsers />
       </SidebarButtons>
       <div className="flex-1"></div>
       <button
