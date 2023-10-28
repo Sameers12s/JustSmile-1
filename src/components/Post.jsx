@@ -5,6 +5,7 @@ import {
   IconTrash,
   IconMessage,
   IconDotsVertical,
+  IconBrandTwitterFilled,
 } from "@tabler/icons-react";
 import moment from "moment";
 import { useAuth } from "../context/auth-context";
@@ -27,6 +28,11 @@ const Post = ({ body, time, username, name, postDocId, uid }) => {
   const [comment, setComment] = useState("");
   const queryClient = useQueryClient();
 
+
+  const tweetNow = () => {
+    let tweetPost = `https://twitter.com/intent/tweet?text=${body}`;
+    window.open(tweetPost);
+  }
   const { data: likes, isLoading: isLikesLoading } = useQuery(
     ["Likes", postDocId],
     () => getPostlikes(postDocId)
@@ -91,18 +97,16 @@ const Post = ({ body, time, username, name, postDocId, uid }) => {
       <div className="flex flex-row w-full p-4 text-neutrals-600">
         <div className="flex flex-row font-bold text-sm">
           <button
-            className={`flex h-full pr-2 items-center  hover:text-neutrals-400 ${
-              likedByUser ? "text-red-600 hover:text-red-800" : ""
-            }`}
+            className={`flex h-full pr-2 items-center  hover:text-neutrals-400 ${likedByUser ? "text-red-600 hover:text-red-800" : ""
+              }`}
             onClick={handleLikeClick}
           >
             {likedByUser ? <IconHeartFilled /> : <IconHeart />}
             {isLikesLoading ? "0" : likes}
           </button>
           <button
-            className={`flex px-2 items-center  hover:text-neutrals-400 ${
-              isCommented ? "text-blue-600 hover:text-blue-800" : ""
-            }`}
+            className={`flex px-2 items-center  hover:text-neutrals-400 ${isCommented ? "text-blue-600 hover:text-blue-800" : ""
+              }`}
             onClick={handleCommentClick}
           >
             <IconMessage />
@@ -116,6 +120,17 @@ const Post = ({ body, time, username, name, postDocId, uid }) => {
               <IconTrash />
             </button>
           ) : null}
+          {currentUser.uid == uid ? (
+            <button
+              className="flex px-2 items-center hover:text-neutrals-400"
+              onClick={tweetNow}
+            >
+              < IconBrandTwitterFilled />
+            </button>
+          ) : null}
+
+
+
         </div>
         <div className="flex-1"></div>
         <div>{moment(parseInt(time)).fromNow()}</div>
